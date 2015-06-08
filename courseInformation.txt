@@ -1,0 +1,29 @@
+21/5-2015
+Hej och välkomna till denna kurs!
+
+Kursen består av fyra delar, med redovisning efter varje del. Vid kursstart kommer
+information om dessa delar att publiceras, men för den som är ivrig att förbereda 
+sig för kursen finns nedan preliminärt innehåll i del 1.
+Som framgår av kursplanen krävs ingen kurslitteratur som ni ska skaffa i förväg, 
+utan här på kurssidan kommer material och länkar till material att ges efterhand.
+Har ni frågor vill vi att ni använder meddelandefunktionen här på kurssidan, det är 
+praktisk att så mycket som möjligt av vår kommunikation sker via denna sida. Gå gärna 
+in under inställningar och välj hur ni vill få aviseringar om händelser på itslearning.
+
+Preliminärt innehåll del 1 (2,5 hp):
+Part 1. Literature survey
+
+1. Do a small literature survey and internet search on Voice Activity Detectors and 
+Baby Alarm Detectors. How do they work?
+
+2. Voice Activity Detectors for conference telephones can be quite advanced, while 
+there are also very simple voice detectors based on energy levels and simple filters. 
+There is one short research paper provided by the teacher, read this to get an example of a method.
+
+3. Are there any Android apps and are there any open source algorithms to study?
+
+4. How does simpler stand-alone commercial Baby Alarms work?
+
+5. Send in a short report, where you briefly summarize the survey above. Also suggest in 
+brief words or pseudo-code an algorithm or a way you would like to use to solve the 
+task of implementing a baby alarm.
