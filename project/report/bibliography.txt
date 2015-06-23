@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{infantDetec}
+R. Cohen, Y. Lavner,
+\emph{Infant Cry Analysis and Detection},
+2012
+
+\bibitem{vadEnhance}
+E. Verteletskaya, K. Sakhnov
+\emph{Voice Activity Detection for Speech Enhancement Applications},
+2010
+
+\end{thebibliography}
