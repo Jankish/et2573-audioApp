@@ -2,7 +2,8 @@
 
 \usepackage{graphicx} % Required for the inclusion of images
 
-\title{App development with audio applications – from m-file to app}
+\title{App development with audio applications – from m-file to app\\
+Project 1}
 
 \author{Daniel \textsc{Jankovic}} % Author name
 
@@ -12,6 +13,8 @@
 
 \maketitle % Insert the title, author and date
 
-\input{bibliography.txt}
+\input{sections/sum.txt}
+
+\input{sections/bibliography.txt}
 
 \end{document}
