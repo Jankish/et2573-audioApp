@@ -1,3 +1,4 @@
+\newpage
 \begin{thebibliography}{1}
 
 \bibitem{infantDetec}
@@ -14,4 +15,11 @@ E. Verteletskaya, K. Sakhnov
 N. Westerlund, M. Dahl
 \emph{Speech Enhancement using an Adaptive Gain Equalizer}
 2003
+
+\bibitem{peakVall}
+R. Narayanam
+\emph{An Efficient Peak Valley Detection based VAD Algorithm for Robust
+	Detection of Speech Auditory Brainstem Responses}
+2013
+
 \end{thebibliography}
