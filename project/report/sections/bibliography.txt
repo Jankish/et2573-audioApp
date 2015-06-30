@@ -7,19 +7,36 @@ R. Cohen, Y. Lavner,
 2012
 
 \bibitem{vadEnhance}
-E. Verteletskaya, K. Sakhnov
+E. Verteletskaya, K. Sakhnov, 
 \emph{Voice Activity Detection for Speech Enhancement Applications},
 2010
 
 \bibitem{blekinge}
-N. Westerlund, M. Dahl
-\emph{Speech Enhancement using an Adaptive Gain Equalizer}
+N. Westerlund, M. Dahl, 
+\emph{Speech Enhancement using an Adaptive Gain Equalizer},
 2003
 
 \bibitem{peakVall}
-R. Narayanam
-\emph{An Efficient Peak Valley Detection based VAD Algorithm for Robust
-	Detection of Speech Auditory Brainstem Responses}
+R. Narayanam, 
+\emph{An Efficient Peak Valley Detection based VAD Algorithm for Robust Detection of Speech Auditory Brainstem Responses},
 2013
+
+\bibitem{statis}
+J. Sohn, N.S. Kim, W. Sung, 
+\emph{A Statistical Model-Based Voice Activity Detection},
+1999
+
+\bibitem{k-NN}
+O. Sutton, 
+\emph{A Statistical Model-Based Voice Activity Detection}, 
+2012
+
+\bibitem{bm3G}
+TappyTaps,
+\emph{https://www.babymonitor3g.com},
+
+\bibitem{sleekbit}
+Sleekbit,
+\emph{http://dormi.sleekbit.com/index.html},
 
 \end{thebibliography}
