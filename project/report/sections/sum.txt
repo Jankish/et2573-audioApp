@@ -1,5 +1,5 @@
 \emph{Voice Activity Detector} (VAD) is a technique used in signal
-processing to detect the presence of human voice in a signal. It is basically
+processing to detect the presence of human voice in a signal. It can be
 an energy detector that indicates speech when the energy of the filtered signal 
 exceeds a predefined threshold. Considered an important technology in speech 
 based communication, today there are various types of applications that use it. 
@@ -18,7 +18,7 @@ little is known about the security features. It is possible to assume that the c
 is uncrypted, at least in some products, and therefore introduces a potential risk for 
 intrusion of peoples privacy. 
 
-To resolve the issues brought up above, an application such as the BAD can can be made more 
+To resolve the issues brought up above, an application such as the\emph{Baby Activity Detector} (BAD) can can be made more 
 portable, versatile and secure with the help of todays smart-phone technology and VAD. There are
 many VAD algorithms to choose from and they all have their strengths and weaknesses. Complex 
 algorithms such as Linear Predictive coding (LPC), mel-frequency cepstrum (MFC) are very powerful
@@ -65,8 +65,9 @@ Following is a purposed algorithm for an BAD application
 \newpage
 \begin{verbatim}
 while(true){
-    Get frame from the register
-    Divide the signal into different sub-bands
+    % Record audio can place it into the register %
+    Get frame from the register 
+    Divide the signal into different sub-bands with FFT
     Calculate the total short-time energy average  
     Calculate noise level for each sub-bands
     if energy average above threshold
@@ -77,8 +78,8 @@ while(true){
             if the ZCR is within 250-600 Hz 
                 Possible infant activity detected!
                 (Occurs only first time, and needs to be reseted)
-                Record the sound for 10 seconds or until rates drops
-                Send the recording to the receiver
+		% Send frames %
+                Start broadcasting the sound to the receiver    
             end
     else
         Reset ZCR
