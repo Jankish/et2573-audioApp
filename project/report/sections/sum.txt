@@ -18,12 +18,12 @@ little is known about the security features. It is possible to assume that the c
 is uncrypted, at least in some products, and therefore introduces a potential risk for 
 intrusion of peoples privacy. 
 
-To resolve the issues brought up above, an application such as the\emph{Baby Activity Detector} (BAD) can can be made more 
+To resolve the issues brought up above, an application such as the \emph{Baby Activity Detector} (BAD) can can be made more 
 portable, versatile and secure with the help of todays smart-phone technology and VAD. There are
 many VAD algorithms to choose from and they all have their strengths and weaknesses. Complex 
 algorithms such as Linear Predictive coding (LPC), mel-frequency cepstrum (MFC) are very powerful
-but quite difficult to grasp and probably to implement, they can be considered out of scope for 
-this course. The following algorithms are easy to implement and can be, when combined, quite robust 
+but quite difficult to grasp and also to implement, they can be considered out of scope for 
+this course. The following VAD algorithms are easy to implement and can be, when combined, quite robust 
 for the task of a basic BAD. The simple short-time energy algorithm calculates the energy levels 
 for each frame to detect voice, unvoiced or silenced regions. Voiced regions will have higher 
 energy levels, however, the algorithm does not take unwanted noise into account which means 
