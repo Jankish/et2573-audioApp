@@ -15,24 +15,25 @@ fileName2=('noise_signals/ventilation_8khz.wav');
 % L?gg samman babyljud och st?rning:
 LOrig1=length(xOrig1);
 LOrig2=length(xOrig2);
-xLen = min(LOrig1,LOrig2); % xLen ?r nu den kortaste l?ngden
-Nstrength = 2; % Styr hur stark st?rningen ska vara
-disp('Adderad brusstyrka: '),disp(Nstrength)
-x=xOrig1(1:xLen)+Nstrength*xOrig2(1:xLen);
-
-blen=128;
+xLen=min(LOrig1);
+%xLen = min(LOrig1,LOrig2); % xLen ?r nu den kortaste l?ngden
+%Nstrength = 2; % Styr hur stark st?rningen ska vara
+%disp('Adderad brusstyrka: '),disp(Nstrength)
+%x=xOrig1(1:xLen)+Nstrength*xOrig2(1:xLen);
+x=xOrig1(1:xLen);
+blen=40;
 
 buff = buffer(x,blen);
 
 buffSquared = buff.^2;
 
-for i=1:length(buff)
+for i=1:length(buffSquared)
     Frameaverage(i,1)=sum(buffSquared(1:end,i))/blen;
 end
 figure(1)
-subplot(311)
+subplot(211)
 plot(xOrig1(1:xLen)), title('Babyljud')
-subplot(312)
-plot(x), title('Babyljud plus st?rning')
-subplot(313)
+%subplot(312)
+%plot(x), title('Babyljud plus st?rning')
+subplot(212)
 plot(Frameaverage,'r'), title('Short-time energy')

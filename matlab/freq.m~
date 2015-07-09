@@ -1,0 +1,19 @@
+close all
+clear all
+
+fileName1=('baby_signals/baby-crying.wav');
+[xOrig1, fsOrig1] = audioread(fileName1);
+fileName2=('baby_signals/baby-crying-01.wav');
+[xOrig2, fsOrig2] = audioread(fileName2);
+fileName2=('baby_signals/baby-talking_8khz.wav');
+[xOrig3, fsOrig3] = audioread(fileName2);
+
+disp('Baby-crying'), disp(fsOrig1);
+disp('Baby-crying-01'), disp(fsOrig2);
+disp('Baby-talking_8khz'), disp(fsOrig3);
+
+N1 = length(xOrig1);
+N2 = length(xOrig2);
+N3 = length(xOrig3);
+
+
