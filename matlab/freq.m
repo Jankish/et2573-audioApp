@@ -36,5 +36,5 @@ noverlap=90;
 NFFT=128;
 
 
-%spectrogram(xOrig1);
-cceps(xOrig1)
+spectrogram(xOrig1,segmentlen,noverlap,NFFT,fsOrig1,'yaxis')
+%cceps(xOrig1)
