@@ -13,7 +13,7 @@ Project 1}
 
 \maketitle % Insert the title, author and date
 
-\input{sections/sum.txt}
+\input{sections/project1.txt}
 
 \input{sections/bibliography.txt}
 
