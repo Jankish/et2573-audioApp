@@ -32,47 +32,47 @@ y1 = fft(xOrig1,n1);
 f1 = (0:n1-1)*(fsOrig1/n1);
 power1 = y1.*conj(y1)/n1;
 
-y1c = fftshift(y1);         
-fs1c = (-n1/2:n1/2-1)*(fsOrig1/n1);  
-power1c = y1c.*conj(y1c)/n1;  
+% y1c = fftshift(y1);         
+% fs1c = (-n1/2:n1/2-1)*(fsOrig1/n1);  
+% power1c = y1c.*conj(y1c)/n1;  
 
 % Second audio file to process
 y2 = fft(xOrig2,n2);
 f2 = (0:n2-1)*(fsOrig2/n2);
 power2 = y2.*conj(y2)/n2;
 
-y2c = fftshift(y2);          
-fs2c = (-n2/2:n2/2-1)*(fsOrig2/n2);  
-power2c = y2c.*conj(y2c)/n2;   
+% y2c = fftshift(y2);          
+% fs2c = (-n2/2:n2/2-1)*(fsOrig2/n2);  
+% power2c = y2c.*conj(y2c)/n2;   
 
 % Third audio file
 y3 = fft(xOrig3,n3);
 f3 = (0:n3-1)*(fsOrig3/n3);
 power3 = y3.*conj(y3)/n3;
 
-y3c = fftshift(y3);          
-fs3c = (-n3/2:n3/2-1)*(fsOrig3/n3);  
-power3c = y3c.*conj(y3c)/n3;   
+% y3c = fftshift(y3);          
+% fs3c = (-n3/2:n3/2-1)*(fsOrig3/n3);  
+% power3c = y3c.*conj(y3c)/n3;   
 
 % Plot the all FFT into one figure
 figure
 plot1 = subplot(311)
-plot(fs1c,power1c)
+plot(f1,abs(y1))
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf bird chirp ext 8khz.wav}')
 plot2 = subplot(312)
-plot(fs2c,power2c)
+plot(f2,abs(y2))
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf ventilation 8khz.wav}')
 plot3 = subplot(313)
-plot(fs3c,power3c)
+plot(f3,abs(y3))
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf traffic noise 01(dobelnsgatan).wav}')
 
-%linkaxes([plot1,plot2,plot3],'y');
+linkaxes([plot1,plot2,plot3],'y');
 
 % fax_bins1 = [0:N1-1];
 % fax_bins2 = [0:N2-1];
