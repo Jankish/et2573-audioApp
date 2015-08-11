@@ -39,4 +39,8 @@ TappyTaps,
 Sleekbit,
 \emph{http://dormi.sleekbit.com/index.html},
 
+\bibitem{agc}
+D. Jankovic, M. Johansson, M. Lichota,
+\emph{Adaptive Gain Control in Digital Signal Processors},
+2015
 \end{thebibliography}
