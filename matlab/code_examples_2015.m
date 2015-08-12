@@ -14,7 +14,7 @@ clear all
 fs = 8000; 
 
 % L?s in ljudfiler (se till att det blir r?tt s?kv?g)
-fileName1=('baby_signals/baby-talking_8khz.wav');
+fileName1=('baby_signals/baby-crying.wav');
 xOrig1 = audioread(fileName1);
 fileName2=('noise_signals/ventilation_8khz.wav');
 xOrig2 = audioread(fileName2);
