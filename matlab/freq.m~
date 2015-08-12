@@ -14,7 +14,7 @@ fileName3=('noise_signals/traffic-noise-01(dobelnsgatan).wav');
 % Own recordings
 fileName4=('noise_signals/noise_ambient_library_2.wav');
 [xOrig4, fsOrig4] = audioread(fileName4);
-fileName5=('noise_signals/noise_traffic_intersection.wav');
+fileName5=('noise_signals/noise_traffic_intersection_2.wav');
 [xOrig5, fsOrig5] = audioread(fileName5);
 
 % Get the length of the audio file
@@ -73,44 +73,39 @@ y4c = fftshift(y4);
 fs4c = (-n4/2:n4/2-1)*(fsOrig4/n4);  
 power4c = y4c.*conj(y4c)/n4;
 % Own recordings
-y5 = fft(xOrig5,n5);
-f5 = (0:n5-1)*(fsOrig5/n5);
-power5 = y5.*conj(y5)/n5;
+y5 = fft(xOrig4,n4);
+f5 = (0:n4-1)*(fsOrig4/n4);
+power4 = y4.*conj(y4)/n4;
 
-y5c = fftshift(y5);          
-fs5c = (-n5/2:n5/2-1)*(fsOrig5/n5);  
-power5c = y5c.*conj(y5c)/n5;
+y4c = fftshift(y4);          
+fs4c = (-n4/2:n4/2-1)*(fsOrig4/n4);  
+power4c = y4c.*conj(y4c)/n4;
 
 
 % Plot the all FFT into one figure
 figure
-plot1 = subplot(511);
+plot1 = subplot(411);
 plot(fs1c,power1c);
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf bird chirp ext 8khz.wav}')
-plot2 = subplot(512);
+plot2 = subplot(412);
 plot(fs2c,power2c);
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf ventilation 8khz.wav}')
-plot3 = subplot(513);
+plot3 = subplot(413);
 plot(fs3c,power3c);
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf traffic noise 01(dobelnsgatan).wav}')
-plot4 = subplot(514);
+plot4 = subplot(414);
 plot(fs4c,power4c);
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf noise ambient library.wav}')
-plot5 = subplot(515);
-plot(fs5c,power5c);
-xlabel('Frequency (Hz)')
-ylabel('Power')
-title('{\bf noise traffic intersection.wav}')
 
-linkaxes([plot1,plot2,plot3,plot4,plot5],'y');
+linkaxes([plot1,plot2,plot3,plot4],'y');
 
 % fax_bins1 = [0:N1-1];
 % fax_bins2 = [0:N2-1];
