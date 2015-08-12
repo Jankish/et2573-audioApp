@@ -8,37 +8,39 @@ From the plots it can be seen that the baby sound spectrum is between $\sim$ 300
 noise sound spectrum is below 200 Hz and between $\sim$1300-2100 Hz. To get the wanted effect from 
 the advanced algorithm a bandpass filter with a band between 300-1300 Hz is the optimal solution. 
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=1\textwidth]{sections/freq_spec_baby_linkaxis.png}
-  \caption{Bla bla bla}
-  \label{fig:baby_spec}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=1\textwidth]{sections/freq_spec_babyFix.png}
-  \caption{Bla bla bla}
-  \label{fig:enhanced}
-\end{figure}
-
-%\begin{figure}[!hp]
+%\begin{figure}[h]
 %  \centering
-%  \begin{minipage}[b]{0.4\textwidth}
-%    \includegraphics[width=1\textwidth]{sections/freq_spec_baby_linkaxis.png}
-%    \caption{Fig111}
-%  \end{minipage}
-%  \hfill
-%  \begin{minipage}[b]{0.4\textwidth}
-%    \includegraphics[width=1\textwidth]{sections/freq_spec_babyFix.png}
-%    \caption{Fig222}
-%  \end{minipage}
+%  \includegraphics[width=1\textwidth]{sections/freq_spec_baby_linkaxis.png}
+%  \caption{Frequency spectrum for baby sound files}
+%  \label{fig:baby_spec}
 %\end{figure}
+%
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=1\textwidth]{sections/freq_spec_babyFix.png}
+%  \caption{Frequency spectrum for baby sound files with scaled y-axis}
+%  \label{fig:enhanced}
+%\end{figure}
+
+\begin{figure}[!hp]
+  \centering
+  \begin{minipage}[b]{0.4\textwidth}
+    \includegraphics[width=1\textwidth]{sections/freq_spec_baby_linkaxis.png}
+    \caption{Frequency spectrum for baby sound}
+    \label{fig:baby_spec}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.4\textwidth}
+    \includegraphics[width=1\textwidth]{sections/freq_spec_babyFix.png}
+    \caption{Frequency spectrum for baby sound, scaled y-axis}
+    \label{fig:enhanced}
+  \end{minipage}
+\end{figure}
 
 \begin{figure}
   \centering
   \includegraphics[width=1\textwidth]{sections/freq_spec_noise_linkaxis.png}
-  \caption{Bla bla bla}
+  \caption{Frequency spectrum for noise files}
   \label{fig:noise_spec}
 \end{figure}
 
@@ -49,24 +51,25 @@ P(n) = \frac{1}{N} \sum\limits_{k=0}^{N-1} x^2(n-k)
 \]
 where $P(n)$ is a vector. Since the BAD application is calculating the power of the input signal in 
 real-time, this equation becomes impossible to implement. Hence, the usage of the \emph{recursive
-averaging} algorithm. It is, in perspective of memory usage, a light and hardware friendly algorithm 
-that calculates the average power level of the signal. Given below,
+averaging} algorithm. It is, in perspective to memory usage, a light and hardware friendly algorithm 
+that calculates the average power level of the signal. Given the equation below,
 \[
 P(n) = \alpha P(n-1)+(1-\alpha)x^2(n)
 \]
-instead of performing the calculation for one sample at the time, a block of the samples are calculated and summed.
+instead of performing the calculation for one sample at the time, a block of samples (simulating an interval) can be calculated and summed.
 The old result is saved to be used as $P(n-1)$. The $\alpha$ is a constant between 0 and 1 and is related to the 
-time by the following formula:
+following formula:
 \[
 \alpha = \frac{1}{T_{s}F_{s}}
 \]
+Despite that the $\alpha$ can be calculated, the get the best results further tweaking and testing is required.
 By having two different $\alpha$ values, when the power is increasing respective decreasing, the algorithm
 can response faster and the decrease slower. That way, hard spikes are avoided and the average power is slowly
-fading,causing quicker reacting if high power signals enter the system.
+fading,causing quicker reaction if high power signals enter the system.
 
 The advanced algorithm is based upon the on the same, \emph{recursive averaging}, algorithm but before calculating
 the average power the signal is first filtered through a Butterworth bandpass filter to remove unwanted 
-frequencies. With the noise frequencies suppressed, the average power will focus on baby sounds only. 
+frequencies. With the noise frequencies suppressed, the average power will focus on baby sound frequencies only. 
 
 \begin{figure}{hp}
   \centering
