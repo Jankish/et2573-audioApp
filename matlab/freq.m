@@ -8,9 +8,12 @@ fileName1=('noise_signals/bird_chirp_ext_8khz.wav');
 %fileName2=('baby_signals/baby-crying-01.wav');
 fileName2=('noise_signals/ventilation_8khz.wav');
 [xOrig2, fsOrig2] = audioread(fileName2);
-%fileName2=('baby_signals/baby-talking_8khz.wav');
-fileName2=('noise_signals/traffic-noise-01(dobelnsgatan).wav');
-[xOrig3, fsOrig3] = audioread(fileName2);
+%fileName3=('baby_signals/baby-talking_8khz.wav');
+fileName3=('noise_signals/traffic-noise-01(dobelnsgatan).wav');
+[xOrig3, fsOrig3] = audioread(fileName3);
+% Own recordings
+fileName4=('noise_signals/noise_ambient_library_2.wav');
+[xOrig4, fsOrig4] = audioread(fileName4);
 
 % disp('Baby-crying'), disp(fsOrig1);
 % disp('Baby-crying-01'), disp(fsOrig2);
@@ -20,10 +23,17 @@ fileName2=('noise_signals/traffic-noise-01(dobelnsgatan).wav');
 m1 = length(xOrig1);
 m2 = length(xOrig2);
 m3 = length(xOrig3);
+
+% Own recordings 
+m4 = length(xOrig4);
+
 % Find a propert transform length
 n1 = pow2(nextpow2(m1));
 n2 = pow2(nextpow2(m2));
 n3 = pow2(nextpow2(m3));
+
+% Own recordings
+n4 = pow2(nextpow2(m4));
 
 % Preform FFT on the different audio files 
 % and rearrange so that they are zero-centered
@@ -52,27 +62,42 @@ power3 = y3.*conj(y3)/n3;
 
 y3c = fftshift(y3);          
 fs3c = (-n3/2:n3/2-1)*(fsOrig3/n3);  
-power3c = y3c.*conj(y3c)/n3;   
+power3c = y3c.*conj(y3c)/n3;
+
+% Own recordings
+y4 = fft(xOrig4,n4);
+f4 = (0:n4-1)*(fsOrig4/n4);
+power4 = y4.*conj(y4)/n4;
+
+y4c = fftshift(y4);          
+fs4c = (-n4/2:n4/2-1)*(fsOrig4/n4);  
+power4c = y4c.*conj(y4c)/n4;
+
 
 % Plot the all FFT into one figure
 figure
-plot1 = subplot(311)
-plot(fs1c,power1c)
+plot1 = subplot(411);
+plot(fs1c,power1c);
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf bird chirp ext 8khz.wav}')
-plot2 = subplot(312)
-plot(fs2c,power2c)
+plot2 = subplot(412);
+plot(fs2c,power2c);
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf ventilation 8khz.wav}')
-plot3 = subplot(313)
-plot(fs3c,power3c)
+plot3 = subplot(413);
+plot(fs3c,power3c);
 xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf traffic noise 01(dobelnsgatan).wav}')
+plot4 = subplot(414);
+plot(fs4c,power4c);
+xlabel('Frequency (Hz)')
+ylabel('Power')
+title('{\bf noise ambient library.wav}')
 
-%linkaxes([plot1,plot2,plot3],'y');
+linkaxes([plot1,plot2,plot3,plot4],'y');
 
 % fax_bins1 = [0:N1-1];
 % fax_bins2 = [0:N2-1];

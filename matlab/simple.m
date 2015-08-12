@@ -1,12 +1,6 @@
-% Clear and close all
-close all
-clear all
 
-% Read the audio files and extract fs
-fileName1=('baby_signals/baby-talking_8khz.wav');
-[xOrig1, fsOrig1] = audioread(fileName1);
-fileName2=('noise_signals/ventilation_8khz.wav');
-[xOrig2, fsOrig2] = audioread(fileName2);
+
+
 
 
 % Add noise to baby recordings
