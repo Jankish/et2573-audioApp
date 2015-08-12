@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/Program Files (x86)/Analog Devices/VisualDSP 5.1.2/System/linker_log.xsl"?>
+<DOCUMENT gen_time='Tue Feb 17 14:13:06 2015
+'>
+<MSG id='0266CE30' mid='li1021' type='Error' >
+<TEXT><![CDATA[The following symbols referenced in processor 'p0' could not be resolved:
+        'fprint [_fprint]' referenced from '.\Debug\main.doj']]></TEXT>
+</MSG>
+</DOCUMENT>

@@ -1,0 +1,8 @@
+function temo = decrease( value )
+%DECREASE Summary of this function goes here
+%   Detailed explanation goes here
+temp = -1.33333*value;
+temo = pow
+
+end
+

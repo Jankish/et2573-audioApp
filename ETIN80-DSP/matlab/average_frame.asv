@@ -1,0 +1,9 @@
+function value = average_frame(m, n, data)
+%AVERAGE_FRAME Summary of this function goes here
+%   Detailed explanation goes here
+
+
+for j = 0
+
+end
+

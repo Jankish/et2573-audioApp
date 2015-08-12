@@ -1,0 +1,6 @@
+function y = increase(value)
+%INCREASE Summary of this function goes here
+%   Detailed explanation goes here
+y = power(10,(((10*log10(value))+40)/10));
+end
+
