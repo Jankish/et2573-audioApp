@@ -1,5 +1,11 @@
 makeSound;
 
+% Predefined values for the algorithm and treshold
+blocklength=10;
+alpha = 0.5;
+threshold = 2;
+alarm = 0;
+
 % For plotting purpose
 x0=x_BC10;
 x1=x_BC11;
@@ -15,12 +21,6 @@ x3=x_BC13;
 % x1=X_BT1;
 % x3=X_BT2;
 % x4=X_BT3;
-
-% Predefined values for the algorithm and treshold
-blocklength=10;
-alpha = 0.5;
-threshold = 2;
-alarm = 0;
 
 % Create a buffer with 10 samples in each frame
 % Baby crying 1
@@ -86,13 +86,10 @@ buffSquared3 = buff_B3.^2;
 %        end
 %    end
 % end
-alarm
+
 [Trace0, ring0, value0] = ringAlarm(P0, threshold, alarm);
-alarm
 [Trace1, ring1, value1] = ringAlarm(P1, threshold, alarm);
-alarm
 [Trace2, ring2, value2] = ringAlarm(P2, threshold, alarm);
-alarm
 [Trace3, ring3, value3] = ringAlarm(P3, threshold, alarm);
 
 % Clean plot
@@ -106,7 +103,7 @@ title('power from the signal');
 subplot(3,4,9)
 plot3=plot(P0,'b');hold on;
 plot(ring0,value0,'or');
-hline=refline(0,2);
+hline=refline(0,threshold);
 hline.Color='r';
 title('treshold and trigger point of the alarm');
 
@@ -120,7 +117,7 @@ title('power from the signal');
 subplot(3,4,10)
 plot6=plot(P1,'b');hold on;
 plot(ring1,value1,'or');
-hline=refline(0,2);
+hline=refline(0,threshold);
 hline.Color='r';
 title('treshold and trigger point of the alarm');
 
@@ -134,7 +131,7 @@ title('power from the signal');
 subplot(3,4,11)
 plot9=plot(P2,'b');hold on;
 plot(ring2,value2,'or');
-hline=refline(0,2);
+hline=refline(0,threshold);
 hline.Color='r';
 title('treshold and trigger point of the alarm');
 
@@ -148,19 +145,6 @@ title('power from the signal');
 subplot(3,4,12)
 plot12=plot(P3,'b');hold on;
 plot(ring3,value3,'or');
-hline=refline(0,2);
+hline=refline(0,threshold);
 hline.Color='r';
 title('treshold and trigger point of the alarm');
-
-
-% % Calculate the average power for each frame
-% for i=1:length(buffSquared)
-%     Frameaverage(i,1)=sum(buffSquared(1:end,i))/blocklength;
-% end
-% 
-% 
-% figure(1)
-% subplot(211)
-% plot(x_baby_crying_1(1:xL_baby_crying1)), title('Babyljud')
-% subplot(212)
-% plot(Frameaverage,'r'), title('recursive averaging')
