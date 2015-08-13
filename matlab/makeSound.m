@@ -71,63 +71,63 @@ Nstrength = 3;
 x_BT3=x_baby_talking(1:xL_baby_talking)+Nstrength*x_noise_bird(1:xL_baby_talking)+Nstrength*x_noise_traffic(1:xL_baby_talking)+Nstrength*x_noise_ventilation(1:xL_baby_talking)+Nstrength*x_noise_amb_lib(1:xL_baby_talking)+Nstrength*x_noise_traff_inter(1:xL_baby_talking);
 
 % Plot the new signal
-figure;
-plot1 = subplot(411);
-plot(x_BC10(1:xL_baby_crying1));
-xlabel('Power')
-title('{\bf clean}')
-plot2 = subplot(412);
-plot(x_BC11(1:xL_baby_crying1));
-xlabel('Power')
-title('{\bf bird noise added}')
-plot3 = subplot(413);
-plot(x_BC12(1:xL_baby_crying1));
-xlabel('Power')
-title('{\bf all the noise added}')
-plot4 = subplot(414);
-plot(x_BC13(1:xL_baby_crying1));
-xlabel('Power')
-title('{\bf all the noise added and amplified}')
-set(gcf,'numbertitle','off','name','Baby crying.wav')
-linkaxes([plot1,plot2,plot3,plot4],'y');
-
-figure;
-plot1 = subplot(411);
-plot(x_BC20(1:xL_baby_crying2));
-xlabel('Power')
-title('{\bf clean}')
-plot2 = subplot(412);
-plot(x_BC21(1:xL_baby_crying2));
-xlabel('Power')
-title('{\bf bird noise added}')
-plot3 = subplot(413);
-plot(x_BC22(1:xL_baby_crying2));
-xlabel('Power')
-title('{\bf all the noise added}')
-plot4 = subplot(414);
-plot(x_BC23(1:xL_baby_crying2));
-xlabel('Power')
-title('{\bf all the noise added and amplified}')
-set(gcf,'numbertitle','off','name','Baby crying1.wav')
-linkaxes([plot1,plot2,plot3,plot4],'y');
-
-figure;
-plot1 = subplot(411);
-plot(x_BT0(1:xL_baby_talking));
-ylim([-1 1]);
-xlabel('Power')
-title('{\bf clean}')
-plot2 = subplot(412);
-plot(x_BT1(1:xL_baby_talking));
-xlabel('Power')
-title('{\bf bird noise added}')
-plot3 = subplot(413);
-plot(x_BT2(1:xL_baby_talking));
-xlabel('Power')
-title('{\bf all the noise added}')
-plot4 = subplot(414);
-plot(x_BT3(1:xL_baby_talking));
-xlabel('Power')
-title('{\bf all the noise added and amplified}')
-set(gcf,'numbertitle','off','name','Baby talking.wav')
-linkaxes([plot1,plot2,plot3,plot4],'y');
+% figure;
+% plot1 = subplot(411);
+% plot(x_BC10(1:xL_baby_crying1));
+% xlabel('Power')
+% title('{\bf clean}')
+% plot2 = subplot(412);
+% plot(x_BC11(1:xL_baby_crying1));
+% xlabel('Power')
+% title('{\bf bird noise added}')
+% plot3 = subplot(413);
+% plot(x_BC12(1:xL_baby_crying1));
+% xlabel('Power')
+% title('{\bf all the noise added}')
+% plot4 = subplot(414);
+% plot(x_BC13(1:xL_baby_crying1));
+% xlabel('Power')
+% title('{\bf all the noise added and amplified}')
+% set(gcf,'numbertitle','off','name','Baby crying.wav')
+% linkaxes([plot1,plot2,plot3,plot4],'y');
+% 
+% figure;
+% plot1 = subplot(411);
+% plot(x_BC20(1:xL_baby_crying2));
+% xlabel('Power')
+% title('{\bf clean}')
+% plot2 = subplot(412);
+% plot(x_BC21(1:xL_baby_crying2));
+% xlabel('Power')
+% title('{\bf bird noise added}')
+% plot3 = subplot(413);
+% plot(x_BC22(1:xL_baby_crying2));
+% xlabel('Power')
+% title('{\bf all the noise added}')
+% plot4 = subplot(414);
+% plot(x_BC23(1:xL_baby_crying2));
+% xlabel('Power')
+% title('{\bf all the noise added and amplified}')
+% set(gcf,'numbertitle','off','name','Baby crying1.wav')
+% linkaxes([plot1,plot2,plot3,plot4],'y');
+% 
+% figure;
+% plot1 = subplot(411);
+% plot(x_BT0(1:xL_baby_talking));
+% ylim([-1 1]);
+% xlabel('Power')
+% title('{\bf clean}')
+% plot2 = subplot(412);
+% plot(x_BT1(1:xL_baby_talking));
+% xlabel('Power')
+% title('{\bf bird noise added}')
+% plot3 = subplot(413);
+% plot(x_BT2(1:xL_baby_talking));
+% xlabel('Power')
+% title('{\bf all the noise added}')
+% plot4 = subplot(414);
+% plot(x_BT3(1:xL_baby_talking));
+% xlabel('Power')
+% title('{\bf all the noise added and amplified}')
+% set(gcf,'numbertitle','off','name','Baby talking.wav')
+% linkaxes([plot1,plot2,plot3,plot4],'y');

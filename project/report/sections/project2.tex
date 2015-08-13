@@ -56,16 +56,15 @@ that calculates the average power level of the signal. Given the equation below,
 \[
 P(n) = \alpha P(n-1)+(1-\alpha)x^2(n)
 \]
-instead of performing the calculation for one sample at the time, a block of samples (simulating an interval) can be calculated and summed.
+instead of performing the calculation for one sample at the time, a block of samples (simulating an interval) are calculated and summed.
 The old result is saved to be used as $P(n-1)$. The $\alpha$ is a constant between 0 and 1 and is related to the 
 following formula:
 \[
 \alpha = \frac{1}{T_{s}F_{s}}
 \]
 Despite that the $\alpha$ can be calculated, the get the best results further tweaking and testing is required.
-By having two different $\alpha$ values, when the power is increasing respective decreasing, the algorithm
-can response faster and the decrease slower. That way, hard spikes are avoided and the average power is slowly
-fading,causing quicker reaction if high power signals enter the system.
+For this BAD algorithm an $\alpha$ value of $0.5$ was choosen as the new value should be equaly summed by the old and
+new power calculation.
 
 The advanced algorithm is based upon the on the same, \emph{recursive averaging}, algorithm but before calculating
 the average power the signal is first filtered through a Butterworth bandpass filter to remove unwanted 

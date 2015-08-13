@@ -4,7 +4,8 @@ makeSound;
 blocklength=10;
 alpha = 0.5;
 treshold = 2;
-
+x=linspace(0,15000,15000);
+y=2;
 buff_BC10 = buffer(x_BC10,blocklength);
 
 m=size(buff_BC10,1); % row
@@ -35,6 +36,7 @@ for i=1:row
        Trace(i,1)=P(i,1);
        Alarm=Alarm+1
        if Alarm == 5
+           %Alarm=Alarm+100;
            ring=i;
            value=P(i,1);
        end
@@ -49,42 +51,15 @@ title('signal');
 subplot(3,3,5)
 plotTemp=plot(ring,value,'o');
 subplot(3,3,4)
-plot2=plot(P,'b');
+plot2=plot(P,':r');hold on;
+plot(ring,value,'o');
+re
+% hold on;
+% plot(x,y,'y');
 title('power from the signal');
 subplot(3,3,7)
-plot3=plot(P,'b');hold on;
-plot(ring,value,'or');
-hline=refline(0,2);
-hline.Color='r';
-title('treshold and trigger point of the alarm');
-
-subplot(3,3,2)
-plot1=plot(x_BC10,'b');
-title('signal');
-subplot(3,3,5)
-plot2=plot(P,'b');
-title('power from the signal');
-subplot(3,3,8)
-plot3=plot(P,'b');hold on;
-plot(ring,value,'or');
-hline=refline(0,2);
-hline.Color='r';
-title('treshold and trigger point of the alarm');
-
-subplot(3,3,3)
-plot1=plot(x_BC10,'b');
-title('signal');
-subplot(3,3,6)
-plotTemp=plot(ring,value,'o');
-subplot(3,3,4)
-plot2=plot(P,'b');
-title('power from the signal');
-subplot(3,3,9)
-plot3=plot(P,'b');hold on;
-plot(ring,value,'or');
-hline=refline(0,2);
-hline.Color='r';
-title('treshold and trigger point of the alarm');
+plot4=plot(Trace,'o');hold on;
+title('trace');
 
 
 
