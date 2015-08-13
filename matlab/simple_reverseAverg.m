@@ -1,9 +1,10 @@
-function [ P ] = simple_reverseAverg( buffSquared, alpha )
-%   SIMPLE_REVERSEAVERG function calculates reverse averaging given a squared
-%   buffer
-%   Input: buffSquared, 
-%   Output: P - array with reversed averaging power calculations
-
+function [ P ] = simple_reverseAverg( buffSquared, n, alpha )
+%   SIMPLE_REVERSEAVERG function calculates reverse averaging 
+%   given a squared buffer
+%   
+%   Input: buffSquared, n, alpha
+%   Output: P - array with reverse averaged power calculations
+    
     for i=1:n
         vec(i,1)=sum(buffSquared(1:end,i));
     end
