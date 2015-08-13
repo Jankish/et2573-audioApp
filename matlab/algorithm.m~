@@ -1,3 +1,6 @@
+close all;
+clear all;
+
 makeSound;
 
 % Predefined values for the algorithm and treshold
@@ -22,12 +25,16 @@ x3=x_BC13;
 % x3=X_BT2;
 % x4=X_BT3;
 
+% Active filtering
+% butterFilter;
+% [x0,x1,x2,x3] = filterPass(x0,x1,x2,x3,BandPassFilt);
+
 % Create a buffer with 10 samples in each frame
 % Baby crying 1
-buff_B0 = buffer(x_BC10,blocklength);
-buff_B1 = buffer(x_BC11,blocklength);
-buff_B2 = buffer(x_BC12,blocklength);
-buff_B3 = buffer(x_BC13,blocklength);
+buff_B0 = buffer(x0,blocklength);
+buff_B1 = buffer(x1,blocklength);
+buff_B2 = buffer(x2,blocklength);
+buff_B3 = buffer(x3,blocklength);
 
 % Baby crying 2
 % buff_B0 = buffer(x_BC20,blocklength);
@@ -54,46 +61,20 @@ buffSquared1 = buff_B1.^2;
 buffSquared2 = buff_B2.^2;
 buffSquared3 = buff_B3.^2;
 
+% Perform reverse averaging 
+[P0] = reverseAverg(buffSquared0, n0, alpha);
+[P1] = reverseAverg(buffSquared1, n1, alpha);
+[P2] = reverseAverg(buffSquared2, n2, alpha);
+[P3] = reverseAverg(buffSquared3, n3, alpha);
 
-% for i=1:n
-%     vec(i,1)=sum(buffSquared(1:end,i));
-% end
-
-
-% v_row = size(vec,1);
-% P=zeros(v_row,1);
-% 
-% P(1,1)=0;
-% for i=2:size(vec,1)
-%     P(i,1)=alpha*P(i-1,1) + (1-alpha)*vec(i,1);
-% end
-[P0] = simple_reverseAverg(buffSquared0, n0, alpha);
-[P1] = simple_reverseAverg(buffSquared1, n1, alpha);
-[P2] = simple_reverseAverg(buffSquared2, n2, alpha);
-[P3] = simple_reverseAverg(buffSquared3, n3, alpha);
-
-% row=size(P,1);
-% Trace=zeros(row,1);
-% 
-% 
-% for i=1:row
-%    if  P(i,1) > threshold
-%        Trace(i,1)=P(i,1);
-%        alarm=alarm+1
-%        if alarm == 5
-%            ring=i;
-%            value=P(i,1);
-%        end
-%    end
-% end
-
+% Calculate whether or not the signal will trigger the alarm
 [Trace0, ring0, value0] = ringAlarm(P0, threshold, alarm);
 [Trace1, ring1, value1] = ringAlarm(P1, threshold, alarm);
 [Trace2, ring2, value2] = ringAlarm(P2, threshold, alarm);
 [Trace3, ring3, value3] = ringAlarm(P3, threshold, alarm);
 
 % Clean plot
-figure
+figure('units','normalized','outerposition',[0 0 1 1])
 subplot(3,4,1)
 plot1=plot(x0,'b');
 title('signal');
@@ -147,4 +128,9 @@ plot12=plot(P3,'b');hold on;
 plot(ring3,value3,'or');
 hline=refline(0,threshold);
 hline.Color='r';
+hold off;
 title('treshold and trigger point of the alarm');
+
+%linkaxes([plot5,plot6,plot7,plot8,plot9,plot10,plot11,plot12],'x');
+
+

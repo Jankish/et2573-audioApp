@@ -110,4 +110,4 @@ xlabel('Frequency (Hz)')
 ylabel('Power')
 title('{\bf noise traffic intersection.wav}')
 
-linkaxes([plot1,plot2,plot3,plot4,plot5],'y');
+% linkaxes([plot1,plot2,plot3,plot4,plot5],'y');

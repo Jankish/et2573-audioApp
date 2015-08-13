@@ -1,4 +1,4 @@
-function [ P ] = simple_reverseAverg( buffSquared, n, alpha )
+function [ P ] = reverseAverg( buffSquared, n, alpha )
 %   SIMPLE_REVERSEAVERG function calculates reverse averaging 
 %   given a squared buffer
 %   
