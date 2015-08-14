@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.6.15)  14 AUG 2015 03:45
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.6.15)  14 AUG 2015 15:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -284,27 +284,33 @@ File: sections/freq_spec_noise_2.png Graphic file (type QTm)
 File: sections/butt_pass_est.png Graphic file (type QTm)
 
 <use  "sections/butt_pass_est.png" > [6]
-File: sections/newFigures/bc1_unfilt.png Graphic file (type QTm)
-
-<use  "sections/newFigures/bc1_unfilt.png" >
 File: sections/newFigures/bc1_unfilt_crop.png Graphic file (type QTm)
 
-<use  "sections/newFigures/bc1_unfilt_crop.png" > [7]
+<use  "sections/newFigures/bc1_unfilt_crop.png" >
+File: sections/newFigures/bc1_unfilt.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bc1_unfilt.png" > [7]
 File: sections/newFigures/bc2_unfilt.png Graphic file (type QTm)
 
 <use  "sections/newFigures/bc2_unfilt.png" >
 File: sections/newFigures/bt_unfilt.png Graphic file (type QTm)
 
-<use  "sections/newFigures/bt_unfilt.png" > [8]
-
-LaTeX Warning: Reference `bt_simp_amped' on page 9 undefined on input line 141.
-
-
+<use  "sections/newFigures/bt_unfilt.png" > [8] [9]
 File: sections/newFigures/bc2_unfilt_amped.png Graphic file (type QTm)
+
 <use  "sections/newFigures/bc2_unfilt_amped.png" >
 File: sections/newFigures/bt_unfilt_amped.png Graphic file (type QTm)
 
-<use  "sections/newFigures/bt_unfilt_amped.png" > [9]) [10] [11]
+<use  "sections/newFigures/bt_unfilt_amped.png" > [10] [11]
+File: sections/newFigures/bc1_filt.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bc1_filt.png" >
+File: sections/newFigures/bc2_filt_amped.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bc2_filt_amped.png" > [12]
+File: sections/newFigures/bt_filt_amped.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bt_filt_amped.png" > [13]) [14]
 (./sections/appendix.tex
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 4.
 
@@ -316,23 +322,60 @@ LaTeX Font Info:    Try loading font information for TS1+pcr on input line 14.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1pcr.fd
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-))) [12
+))
+(/Users/daniel/Documents/et2573-audioApp/matlab/reverseAverg.m) [15
 
 ]
-(./sections/bibliography.txt) [13
+(/Users/daniel/Documents/et2573-audioApp/matlab/makeSound.m
+Overfull \hbox (15.00366pt too wide) in paragraph at lines 19--20
+[][][][][][][][][][][][][][][] 
+ []
 
-] (./report.aux)
 
-LaTeX Warning: There were undefined references.
+Overfull \hbox (15.00366pt too wide) in paragraph at lines 23--25
+[][][][][][][][][][][][][][][] 
+ []
 
- ) 
+
+Overfull \hbox (19.80371pt too wide) in paragraph at lines 36--37
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (5.40356pt too wide) in paragraph at lines 37--38
+[][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (19.80371pt too wide) in paragraph at lines 38--39
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (5.40356pt too wide) in paragraph at lines 39--40
+[][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (15.00366pt too wide) in paragraph at lines 40--41
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (5.40356pt too wide) in paragraph at lines 41--43
+[][][][][][][][][][][][][] 
+ []
+
+[16])) [17] (./sections/bibliography.txt) [18
+
+] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 3605 strings out of 493706
- 48503 string characters out of 6145769
- 113523 words of memory out of 5000000
- 6904 multiletter control sequences out of 15000+600000
- 10563 words of font info for 39 fonts, out of 8000000 for 9000
+ 3690 strings out of 493706
+ 50059 string characters out of 6145769
+ 146068 words of memory out of 5000000
+ 6980 multiletter control sequences out of 15000+600000
+ 10614 words of font info for 39 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 33i,8n,42p,262b,1220s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,8n,42p,262b,1478s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (13 pages).
+Output written on report.pdf (18 pages).
