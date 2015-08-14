@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.6.15)  12 AUG 2015 16:00
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.6.15)  14 AUG 2015 03:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -238,28 +238,35 @@ Package: listing 1999/05/25
 
 Package `listing', V1.2, <1999/05/25>
 \c@listing=\count107
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count108
+\float@exts=\toks21
+\float@box=\box30
+\@float@everytoks=\toks22
+\@floatcapt=\box31
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
- (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 15.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 14.
-\c@lstlisting=\count108
+LaTeX Font Info:    ... okay on input line 15.
+\c@lstlisting=\count109
 Missing character: There is no – in font cmr17!
 
 (./sections/project1.tex [1
@@ -274,21 +281,58 @@ File: sections/freq_spec_babyFix.png Graphic file (type QTm)
 File: sections/freq_spec_noise_2.png Graphic file (type QTm)
 
 <use  "sections/freq_spec_noise_2.png" > [4] [5]
-File: sections/butt_pass_scale.png Graphic file (type QTm)
+File: sections/butt_pass_est.png Graphic file (type QTm)
 
-<use  "sections/butt_pass_scale.png" >) [6] (./sections/appendix.tex) [7
+<use  "sections/butt_pass_est.png" > [6]
+File: sections/newFigures/bc1_unfilt.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bc1_unfilt.png" >
+File: sections/newFigures/bc1_unfilt_crop.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bc1_unfilt_crop.png" > [7]
+File: sections/newFigures/bc2_unfilt.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bc2_unfilt.png" >
+File: sections/newFigures/bt_unfilt.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bt_unfilt.png" > [8]
+
+LaTeX Warning: Reference `bt_simp_amped' on page 9 undefined on input line 141.
+
+
+File: sections/newFigures/bc2_unfilt_amped.png Graphic file (type QTm)
+<use  "sections/newFigures/bc2_unfilt_amped.png" >
+File: sections/newFigures/bt_unfilt_amped.png Graphic file (type QTm)
+
+<use  "sections/newFigures/bt_unfilt_amped.png" > [9]) [10] [11]
+(./sections/appendix.tex
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 4.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+(/Users/daniel/Documents/et2573-audioApp/matlab/butterFilter.m
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 14.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+))) [12
 
 ]
-(./sections/bibliography.txt) [8
+(./sections/bibliography.txt) [13
 
-] (./report.aux) ) 
+] (./report.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3407 strings out of 493706
- 45613 string characters out of 6145769
- 108122 words of memory out of 5000000
- 6732 multiletter control sequences out of 15000+600000
- 9223 words of font info for 34 fonts, out of 8000000 for 9000
+ 3605 strings out of 493706
+ 48503 string characters out of 6145769
+ 113523 words of memory out of 5000000
+ 6904 multiletter control sequences out of 15000+600000
+ 10563 words of font info for 39 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 33i,8n,42p,262b,282s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,8n,42p,262b,1220s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (8 pages).
+Output written on report.pdf (13 pages).

@@ -1,32 +1,31 @@
-function [ Trace,ring,value ] = ringAlarm( P, threshold, alarm )
-%   UNTITLED calculates when the alarm should go off
+function [ sample,value ] = ringAlarm( P, threshold)
+%   ringAlarm calculates when the alarm should go off
+%   The alarm goes off when the threshold value has been 
+%   breached 5 times, which means that at least 5 frames 
+%   must have contained the wanted sound.
 %
 %   Input: P-power array, threshold value, alarm counter
 %   Output: Trace-array, index for trigger frame, value of the frame 
 
-    row=size(P,1);
-    Trace=zeros(row,1);
-    ring=0;
+    % Alarm counter and return values declared
+    sample=0;
     value=0;
-    for i=1:row
+    alarm=0;
+    
+    for i=1:size(P,1)
         P(i,1);
+        % Validates whether or not the power value has
+        % breached the threshold
         if  P(i,1) > threshold
-            Trace(i,1)=P(i,1);
             alarm=alarm+1;
+            % If 5 frames have breached the threshold
+            % the alarm is set to go off
             if alarm == 5
-                ring=i;
+                sample=i;
                 value=P(i,1);
-                disp('ALARM!');
+                %disp('ALARM!');
             end
         end
     end
-  
-%     if alarm == 0 & alarm < 5
-%         disp('equals 0 ?');
-%         ring=0
-%         value=0
-%     end
-%    ring
-%    value
 end
 
