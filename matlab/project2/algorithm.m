@@ -7,7 +7,7 @@ makeSound;
 blocklength=10;
 alpha = 0.5;
 threshold = 1;
-Filtering = 0;
+filtering = 0;
 
 % Active the advanced algorithm (filtering)
 % butterFilter;
@@ -18,7 +18,7 @@ x1=x_BC11;
 x2=x_BC12;
 x3=x_BC13;
 
-if Filtering == 1 
+if filtering == 1 
     [x0,x1,x2,x3] = filterPass(x0,x1,x2,x3,BandPassFilt);
 end
 % Create a buffer with 10 samples in each frame
@@ -115,7 +115,7 @@ x2=x_BC22;
 x3=x_BC23;
 
 
-if Filtering == 1 
+if filtering == 1 
     [x0,x1,x2,x3] = filterPass(x0,x1,x2,x3,BandPassFilt);
 end
 % Create a buffer with 10 samples in each frame
@@ -212,7 +212,7 @@ x2=x_BT2;
 x3=x_BT3;
 
 
-if Filtering == 1 
+if filtering == 1 
     [x0,x1,x2,x3] = filterPass(x0,x1,x2,x3,BandPassFilt);
 end
 % Create a buffer with 10 samples in each frame

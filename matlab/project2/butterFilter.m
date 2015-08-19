@@ -7,7 +7,7 @@ F_stop2 = 1400;
 A_stop2 = 100;
 A_pass = 1;
 Fs = 8000;
-Filtering = 1;
+filtering = 1;
 
 % Design and create Bandpass filter
 BandPassSpecObj = fdesign.bandpass(F_stop1, F_pass1, ...
