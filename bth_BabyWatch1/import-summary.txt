@@ -1,0 +1,186 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* doc\
+* doc\CVS\
+* doc\CVS\Entries
+* doc\CVS\Entries.Extra
+* doc\CVS\Entries.Extra.Old
+* doc\CVS\Entries.Old
+* doc\CVS\Repository
+* doc\CVS\Root
+* doc\CVS\Template
+* doc\allclasses-frame.html
+* doc\allclasses-noframe.html
+* doc\com\
+* doc\com\CVS\
+* doc\com\CVS\Entries
+* doc\com\CVS\Entries.Extra
+* doc\com\CVS\Entries.Extra.Old
+* doc\com\CVS\Entries.Old
+* doc\com\CVS\Repository
+* doc\com\CVS\Root
+* doc\com\CVS\Template
+* doc\com\softa\
+* doc\com\softa\CVS\
+* doc\com\softa\CVS\Entries
+* doc\com\softa\CVS\Entries.Extra
+* doc\com\softa\CVS\Entries.Extra.Old
+* doc\com\softa\CVS\Entries.Old
+* doc\com\softa\CVS\Repository
+* doc\com\softa\CVS\Root
+* doc\com\softa\CVS\Template
+* doc\com\softa\babywatch\
+* doc\com\softa\babywatch\CVS\
+* doc\com\softa\babywatch\CVS\Entries
+* doc\com\softa\babywatch\CVS\Entries.Extra
+* doc\com\softa\babywatch\CVS\Entries.Extra.Old
+* doc\com\softa\babywatch\CVS\Entries.Old
+* doc\com\softa\babywatch\CVS\Repository
+* doc\com\softa\babywatch\CVS\Root
+* doc\com\softa\babywatch\CVS\Template
+* doc\com\softa\babywatch\detectors\
+* doc\com\softa\babywatch\detectors\BabyDetector.html
+* doc\com\softa\babywatch\detectors\CVS\
+* doc\com\softa\babywatch\detectors\CVS\Entries
+* doc\com\softa\babywatch\detectors\CVS\Entries.Extra
+* doc\com\softa\babywatch\detectors\CVS\Entries.Extra.Old
+* doc\com\softa\babywatch\detectors\CVS\Entries.Old
+* doc\com\softa\babywatch\detectors\CVS\Repository
+* doc\com\softa\babywatch\detectors\CVS\Root
+* doc\com\softa\babywatch\detectors\CVS\Template
+* doc\com\softa\babywatch\detectors\class-use\
+* doc\com\softa\babywatch\detectors\class-use\BabyDetector.html
+* doc\com\softa\babywatch\detectors\class-use\CVS\
+* doc\com\softa\babywatch\detectors\class-use\CVS\Entries
+* doc\com\softa\babywatch\detectors\class-use\CVS\Entries.Extra
+* doc\com\softa\babywatch\detectors\class-use\CVS\Entries.Extra.Old
+* doc\com\softa\babywatch\detectors\class-use\CVS\Entries.Old
+* doc\com\softa\babywatch\detectors\class-use\CVS\Repository
+* doc\com\softa\babywatch\detectors\class-use\CVS\Root
+* doc\com\softa\babywatch\detectors\class-use\CVS\Template
+* doc\com\softa\babywatch\detectors\package-frame.html
+* doc\com\softa\babywatch\detectors\package-summary.html
+* doc\com\softa\babywatch\detectors\package-tree.html
+* doc\com\softa\babywatch\detectors\package-use.html
+* doc\constant-values.html
+* doc\deprecated-list.html
+* doc\help-doc.html
+* doc\index-files\
+* doc\index-files\CVS\
+* doc\index-files\CVS\Entries
+* doc\index-files\CVS\Entries.Extra
+* doc\index-files\CVS\Entries.Extra.Old
+* doc\index-files\CVS\Entries.Old
+* doc\index-files\CVS\Repository
+* doc\index-files\CVS\Root
+* doc\index-files\CVS\Template
+* doc\index-files\index-1.html
+* doc\index-files\index-2.html
+* doc\index-files\index-3.html
+* doc\index-files\index-4.html
+* doc\index.html
+* doc\overview-tree.html
+* doc\package-list
+* doc\resources\
+* doc\resources\CVS\
+* doc\resources\CVS\Entries
+* doc\resources\CVS\Entries.Extra
+* doc\resources\CVS\Entries.Extra.Old
+* doc\resources\CVS\Entries.Old
+* doc\resources\CVS\Repository
+* doc\resources\CVS\Root
+* doc\resources\CVS\Template
+* doc\resources\inherit.gif
+* doc\stylesheet.css
+* ic_launcher-web.png
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* lint.xml => app\lint.xml
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+* src\com\CVS\Entries => app\src\main\resources\com\CVS\Entries
+* src\com\CVS\Entries.Extra => app\src\main\resources\com\CVS\Entries.Extra
+* src\com\CVS\Entries.Extra.Old => app\src\main\resources\com\CVS\Entries.Extra.Old
+* src\com\CVS\Entries.Old => app\src\main\resources\com\CVS\Entries.Old
+* src\com\CVS\Repository => app\src\main\resources\com\CVS\Repository
+* src\com\CVS\Root => app\src\main\resources\com\CVS\Root
+* src\com\CVS\Template => app\src\main\resources\com\CVS\Template
+* src\com\softa\babywatch\actions\CVS\Entries => app\src\main\resources\com\softa\babywatch\actions\CVS\Entries
+* src\com\softa\babywatch\actions\CVS\Entries.Extra => app\src\main\resources\com\softa\babywatch\actions\CVS\Entries.Extra
+* src\com\softa\babywatch\actions\CVS\Entries.Extra.Old => app\src\main\resources\com\softa\babywatch\actions\CVS\Entries.Extra.Old
+* src\com\softa\babywatch\actions\CVS\Entries.Old => app\src\main\resources\com\softa\babywatch\actions\CVS\Entries.Old
+* src\com\softa\babywatch\actions\CVS\Repository => app\src\main\resources\com\softa\babywatch\actions\CVS\Repository
+* src\com\softa\babywatch\actions\CVS\Root => app\src\main\resources\com\softa\babywatch\actions\CVS\Root
+* src\com\softa\babywatch\actions\CVS\Template => app\src\main\resources\com\softa\babywatch\actions\CVS\Template
+* src\com\softa\babywatch\CVS\Entries => app\src\main\resources\com\softa\babywatch\CVS\Entries
+* src\com\softa\babywatch\CVS\Entries.Extra => app\src\main\resources\com\softa\babywatch\CVS\Entries.Extra
+* src\com\softa\babywatch\CVS\Entries.Extra.Old => app\src\main\resources\com\softa\babywatch\CVS\Entries.Extra.Old
+* src\com\softa\babywatch\CVS\Entries.Old => app\src\main\resources\com\softa\babywatch\CVS\Entries.Old
+* src\com\softa\babywatch\CVS\Repository => app\src\main\resources\com\softa\babywatch\CVS\Repository
+* src\com\softa\babywatch\CVS\Root => app\src\main\resources\com\softa\babywatch\CVS\Root
+* src\com\softa\babywatch\CVS\Template => app\src\main\resources\com\softa\babywatch\CVS\Template
+* src\com\softa\babywatch\detectors\CVS\Entries => app\src\main\resources\com\softa\babywatch\detectors\CVS\Entries
+* src\com\softa\babywatch\detectors\CVS\Entries.Extra => app\src\main\resources\com\softa\babywatch\detectors\CVS\Entries.Extra
+* src\com\softa\babywatch\detectors\CVS\Entries.Extra.Old => app\src\main\resources\com\softa\babywatch\detectors\CVS\Entries.Extra.Old
+* src\com\softa\babywatch\detectors\CVS\Entries.Old => app\src\main\resources\com\softa\babywatch\detectors\CVS\Entries.Old
+* src\com\softa\babywatch\detectors\CVS\Repository => app\src\main\resources\com\softa\babywatch\detectors\CVS\Repository
+* src\com\softa\babywatch\detectors\CVS\Root => app\src\main\resources\com\softa\babywatch\detectors\CVS\Root
+* src\com\softa\babywatch\detectors\CVS\Template => app\src\main\resources\com\softa\babywatch\detectors\CVS\Template
+* src\com\softa\CVS\Entries => app\src\main\resources\com\softa\CVS\Entries
+* src\com\softa\CVS\Entries.Extra => app\src\main\resources\com\softa\CVS\Entries.Extra
+* src\com\softa\CVS\Entries.Extra.Old => app\src\main\resources\com\softa\CVS\Entries.Extra.Old
+* src\com\softa\CVS\Entries.Old => app\src\main\resources\com\softa\CVS\Entries.Old
+* src\com\softa\CVS\Repository => app\src\main\resources\com\softa\CVS\Repository
+* src\com\softa\CVS\Root => app\src\main\resources\com\softa\CVS\Root
+* src\com\softa\CVS\Template => app\src\main\resources\com\softa\CVS\Template
+* src\CVS\Entries => app\src\main\resources\CVS\Entries
+* src\CVS\Entries.Extra => app\src\main\resources\CVS\Entries.Extra
+* src\CVS\Entries.Extra.Old => app\src\main\resources\CVS\Entries.Extra.Old
+* src\CVS\Entries.Old => app\src\main\resources\CVS\Entries.Old
+* src\CVS\Repository => app\src\main\resources\CVS\Repository
+* src\CVS\Root => app\src\main\resources\CVS\Root
+* src\CVS\Template => app\src\main\resources\CVS\Template
+* Entries.Extra => Entries.extra
+* Entries.Extra.Old => Entries.extra.old
+* Entries.Old => Entries.old
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="ring"
+    android:innerRadius="120dp"
+    android:thickness="20dp" >
+
+    <solid android:color="#000000" />
+
+</shape><!-- From: file:/Users/daniel/Documents/et2573-audioApp/bth_BabyWatch1/app/src/main/res/drawable/noise_circle.xml -->
