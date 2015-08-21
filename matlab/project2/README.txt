@@ -17,7 +17,8 @@ project2
 |----butterFilter.om
 |----filterPass.m
 |----makeSound.m
-|----reverseAverg.m
+|----README
+|----recursiveAverg.m
 |----ringAlarm.m
 
 -algorithm.m
@@ -34,10 +35,11 @@ Advanced algorithm, filters the signals through the created bandpass filter
 that was created in butterFilter.m. The script is called from algorithm.m
 
 -makeSound.m
-Creates the different configurations in the sets. New sound files can be inserted
-here to test the algorithm even further. This script is called from algorithm.m.
+Creates the different configurations in the sets. New sound files can be
+inserted here to test the algorithm even further. This script is called from
+algorithm.m.
 
--reverseAverg.m
+-recursiveAverg.m
 This script hold the reverse averaging algorithm. Called from algorithm.m.
 
 -ringAlarm.m
@@ -54,6 +56,8 @@ set off.
        		  |
        |<---------|
        |
+       * For each set the following is performed
+       |
        |-->(calls if filtering==1) filterPass
        		  |
        |<---------|
@@ -66,7 +70,7 @@ set off.
        		  |
        |<---------|
        |
-       Plot 3 figures, each a different base
+       |->plot<-|
        |
 <-end--|
 

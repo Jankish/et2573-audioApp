@@ -1,12 +1,12 @@
-function [ P ] = reverseAverg( buffer, alpha )
-%   SIMPLE_REVERSEAVERG function calculates reverse averaging 
+function [ P ] = recursiveAverg( buffer, alpha )
+%   SIMPLE_RECURSIVEAVERG function calculates reverse averaging 
 %   given a squared buffer. The buffer is squared and the frames
 %   are summed up and placed in a cell in vec-array. Each cell 
 %   represent a frame and is later used in the recursive averaging
 %   algorithm. The alpha value is 0.5. 
 %   
 %   Input: buffSquared, alpha
-%   Output: P-array with reverse averaging power calculations
+%   Output: P-array with recursive averaging power calculations
     
     % The buffer-matrix is squared and summed to fit in
     % vec-array

@@ -29,10 +29,10 @@ buff_B2 = buffer(x2,blocklength);
 buff_B3 = buffer(x3,blocklength);
 
 % Perform reverse averaging 
-[P0] = reverseAverg(buff_B0, alpha);
-[P1] = reverseAverg(buff_B1, alpha);
-[P2] = reverseAverg(buff_B2, alpha);
-[P3] = reverseAverg(buff_B3, alpha);
+[P0] = recursiveAverg(buff_B0, alpha);
+[P1] = recursiveAverg(buff_B1, alpha);
+[P2] = recursiveAverg(buff_B2, alpha);
+[P3] = recursiveAverg(buff_B3, alpha);
 
 % Calculate whether or not the signal will trigger the alarm
 [sample0, value0] = ringAlarm(P0, threshold);
@@ -45,7 +45,11 @@ buff_B3 = buffer(x3,blocklength);
 figure('units','normalized','outerposition',[0 0 1 1])
 subplot(3,4,1)
 plot1=plot(x0,'b');
-title('clean');
+if filtering==1
+    title('clean (filtered)');
+else
+    title('clean');
+end
 subplot(3,4,5)
 plot2=plot(P0,'b');
 title('recursive averaging');
@@ -54,14 +58,16 @@ plot3=plot(P0,'b');hold on;
 plot(sample0,value0,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Bird and ventilation plot
 subplot(3,4,2)
 plot4=plot(x1,'b');
-title('bird and ventilation noise added');
+if filtering==1
+    title('bird and ventilation noise added (filtered)');
+else
+    title('bird and ventilation noise added');
+end
 subplot(3,4,6)
 plot5=plot(P1,'b');
 title('recursive averaging');
@@ -70,14 +76,16 @@ plot6=plot(P1,'b');hold on;
 plot(sample1,value1,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Noise plot
 subplot(3,4,3)
 plot7=plot(x2,'b');
-title('all noise files added');
+if filtering==1
+    title('all noise files added (filtered)');
+else
+    title('all noise files added');
+end
 subplot(3,4,7)
 plot8=plot(P2,'b');
 title('recursive averaging');
@@ -86,14 +94,16 @@ plot9=plot(P2,'b');hold on;
 plot(sample2,value2,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Amplified noise plot
 subplot(3,4,4)
 plot10=plot(x3,'b');
-title('all noise files added and amplified');
+if filtering==1
+    title('all noise files added and amplified (filtered)');
+else
+    title('all noise files added and amplified');
+end
 subplot(3,4,8)
 plot11=plot(P3,'b');
 title('recursive averaging');
@@ -102,8 +112,6 @@ plot12=plot(P3,'b');hold on;
 plot(sample3,value3,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 set(gcf,'name','Baby Crying.wav set','numbertitle','off')
 
@@ -126,10 +134,10 @@ buff_B2 = buffer(x2,blocklength);
 buff_B3 = buffer(x3,blocklength);
 
 % Perform reverse averaging 
-[P0] = reverseAverg(buff_B0, alpha);
-[P1] = reverseAverg(buff_B1, alpha);
-[P2] = reverseAverg(buff_B2, alpha);
-[P3] = reverseAverg(buff_B3, alpha);
+[P0] = recursiveAverg(buff_B0, alpha);
+[P1] = recursiveAverg(buff_B1, alpha);
+[P2] = recursiveAverg(buff_B2, alpha);
+[P3] = recursiveAverg(buff_B3, alpha);
 
 % Calculate whether or not the signal will trigger the alarm
 [sample0, value0] = ringAlarm(P0, threshold);
@@ -142,7 +150,11 @@ buff_B3 = buffer(x3,blocklength);
 figure('units','normalized','outerposition',[0 0 1 1])
 subplot(3,4,1)
 plot1=plot(x0,'b');
-title('clean');
+if filtering==1
+    title('clean (filtered)');
+else
+    title('clean');
+end
 subplot(3,4,5)
 plot2=plot(P0,'b');
 title('recursive averaging');
@@ -151,14 +163,16 @@ plot3=plot(P0,'b');hold on;
 plot(sample0,value0,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Bird and ventilation plot
 subplot(3,4,2)
 plot4=plot(x1,'b');
-title('bird and ventilation noise added');
+if filtering==1
+    title('bird and ventilation noise added (filtered)');
+else
+    title('bird and ventilation noise added');
+end
 subplot(3,4,6)
 plot5=plot(P1,'b');
 title('recursive averaging');
@@ -167,14 +181,16 @@ plot6=plot(P1,'b');hold on;
 plot(sample1,value1,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Noise plot
 subplot(3,4,3)
 plot7=plot(x2,'b');
-title('all noise files added');
+if filtering==1
+    title('all noise files added (filtered)');
+else
+    title('all noise files added');
+end
 subplot(3,4,7)
 plot8=plot(P2,'b');
 title('recursive averaging');
@@ -183,14 +199,16 @@ plot9=plot(P2,'b');hold on;
 plot(sample2,value2,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Amplified noise plot
 subplot(3,4,4)
 plot10=plot(x3,'b');
-title('all noise files added and amplified');
+if filtering==1
+    title('all noise files added and amplified (filtered)');
+else
+    title('all noise files added and amplified');
+end
 subplot(3,4,8)
 plot11=plot(P3,'b');
 title('recursive averaging');
@@ -199,8 +217,6 @@ plot12=plot(P3,'b');hold on;
 plot(sample3,value3,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 set(gcf,'name','Baby Crying1.wav set','numbertitle','off')
 
@@ -223,10 +239,10 @@ buff_B2 = buffer(x2,blocklength);
 buff_B3 = buffer(x3,blocklength);
 
 % Perform reverse averaging 
-[P0] = reverseAverg(buff_B0, alpha);
-[P1] = reverseAverg(buff_B1, alpha);
-[P2] = reverseAverg(buff_B2, alpha);
-[P3] = reverseAverg(buff_B3, alpha);
+[P0] = recursiveAverg(buff_B0, alpha);
+[P1] = recursiveAverg(buff_B1, alpha);
+[P2] = recursiveAverg(buff_B2, alpha);
+[P3] = recursiveAverg(buff_B3, alpha);
 
 % Calculate whether or not the signal will trigger the alarm
 [sample0, value0] = ringAlarm(P0, threshold);
@@ -239,7 +255,11 @@ buff_B3 = buffer(x3,blocklength);
 figure('units','normalized','outerposition',[0 0 1 1])
 subplot(3,4,1)
 plot1=plot(x0,'b');
-title('clean');
+if filtering==1
+    title('clean (filtered)');
+else
+    title('clean');
+end
 subplot(3,4,5)
 plot2=plot(P0,'b');
 title('recursive averaging');
@@ -248,14 +268,16 @@ plot3=plot(P0,'b');hold on;
 plot(sample0,value0,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Bird and ventilation plot
 subplot(3,4,2)
 plot4=plot(x1,'b');
-title('bird and ventilation noise added');
+if filtering==1
+    title('bird and ventilation noise added (filtered)');
+else
+    title('bird and ventilation noise added');
+end
 subplot(3,4,6)
 plot5=plot(P1,'b');
 title('recursive averaging');
@@ -264,14 +286,16 @@ plot6=plot(P1,'b');hold on;
 plot(sample1,value1,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Noise plot
 subplot(3,4,3)
 plot7=plot(x2,'b');
-title('all noise files added');
+if filtering==1
+    title('all noise files added (filtered)');
+else
+    title('all noise files added');
+end
 subplot(3,4,7)
 plot8=plot(P2,'b');
 title('recursive averaging');
@@ -280,14 +304,16 @@ plot9=plot(P2,'b');hold on;
 plot(sample2,value2,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 
 % Amplified noise plot
 subplot(3,4,4)
 plot10=plot(x3,'b');
-title('all noise files added and amplified');
+if filtering==1
+    title('all noise files added and amplified (filtered)');
+else
+    title('all noise files added and amplified');
+end
 subplot(3,4,8)
 plot11=plot(P3,'b');
 title('recursive averaging');
@@ -296,8 +322,6 @@ plot12=plot(P3,'b');hold on;
 plot(sample3,value3,'or');
 hline=refline(0,threshold);
 hline.Color='g';
-hline=refline(0,threshold+1);
-hline.Color='r';
 title('treshold and trigger point of the alarm');
 set(gcf,'name','Baby talking.wav set','numbertitle','off')
 

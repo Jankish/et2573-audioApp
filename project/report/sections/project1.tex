@@ -1,66 +1,84 @@
-\section{Part 1}
-\emph{Voice Activity Detector} (VAD) is a technique used in signal
-processing to detect the presence of human voice in a signal. It can be
-an energy detector that indicates speech when the energy of the filtered signal 
-exceeds a predefined threshold. Considered an important technology in speech 
-based communication, today there are various types of applications that use it. 
-Therefore a wide variety of VAD algorithms have been developed to provide the needed features. 
+\section{Part 1} \emph{Voice Activity Detector} (VAD) is a technique used in
+signal processing to detect the presence of human voice in a signal. It can be
+an energy detector that indicates speech when the energy of the filtered signal
+exceeds a predefined threshold. Considered an important technology in speech
+based communication, today there are various types of applications that use it.
+Therefore a wide variety of VAD algorithms have been developed to provide the
+needed features. 
 
-There are different kind of stand-alone commercial baby monitors on the market today. 
-From the most basic, that use one-way radio communication, to advance two-way communication
-monitors that use signal processing to transmit audio when a predefined threshold has been 
-reached. It is also possible to find baby video monitors that broadcast both audio and video when 
-the sensors notice movement. Since most of the monitor applications rely on radio signals to 
-communicate between the units there is a probability that the signal 
-will weaken or possibly not even reach the receiver because it needs to pass through multiple walls
-of varying thickness. The signal could also be effected by other applications. 
-As the stand-alone monitor focuses on reliability (among other important sale strategies), 
-little is known about the security features. It is possible to assume that the communication 
-is uncrypted, at least in some products, and therefore introduces a potential risk for 
-intrusion of peoples privacy. 
+There are different kind of stand-alone commercial baby monitors on the market
+today.  From the most basic, that use one-way radio communication, to advance
+two-way communication monitors that use signal processing to transmit audio
+when a predefined threshold has been reached. It is also possible to find baby
+video monitors that broadcast both audio and video when the sensors notice
+movement. Since most of the monitor applications rely on radio signals to
+communicate between the units there is a probability that the signal will
+weaken or possibly not even reach the receiver because it needs to pass through
+multiple walls of varying thickness. The signal could also be effected by other
+applications.  As the stand-alone monitor focuses on reliability (among other
+important sale strategies), little is known about the security
+features. It is possible to assume that the communication is uncrypted, at
+least in some products, and therefore introduces a potential risk for intrusion
+of peoples privacy. 
 
-To resolve the issues brought up above, an application such as the \emph{Baby Activity Detector} (BAD) can can be made more 
-portable, versatile and secure with the help of todays smart-phone technology and VAD. There are
-many VAD algorithms to choose from and they all have their strengths and weaknesses. Complex 
-algorithms such as Linear Predictive coding (LPC), mel-frequency cepstrum (MFC) are very powerful
-but quite difficult to grasp and also to implement, they can be considered out of scope for 
-this course. The following VAD algorithms are easy to implement and can be, when combined, quite robust 
-for the task of a basic BAD. The simple short-time energy algorithm calculates the energy levels 
-for each frame to detect voice, unvoiced or silenced regions. Voiced regions will have higher 
-energy levels, however, the algorithm does not take unwanted noise into account which means 
-that we can have false indication of voice detection. In order to remove the noise from the 
-signal, spectral subtraction can be preformed. In the case of BAD, the threshold needs to be 
-adjusted so that unforeseeable sound is not interpret as the infants cry. 
-Zero-crossing rate (ZCR), is the rate at which a signal changes from plus to minus and back. 
-The higher the rate the higher the frequency which indicates possible voice activity. According to \cite{infantDetec} 
-the cry sound that an infant makes has a fundamental frequency of 250-600 Hz (pitch). To be able to
-use ZCR together with the information above, it is necessary to extract the pitch from the signal
-in order to match the frequency interval. 
+To resolve the issues brought up above, an application such as the \emph{Baby
+Activity Detector} (BAD) can can be made more portable, versatile and
+secure with the help of todays smart-phone technology and VAD. There
+are many VAD algorithms to choose from and they all have their
+strengths and weaknesses. Complex algorithms such as Linear Predictive
+coding (LPC), mel-frequency cepstrum (MFC) are very powerful but quite
+difficult to grasp and also to implement, they can be considered out of
+scope for this course. The following VAD algorithms are easy to
+implement and can be, when combined, quite robust for the task of a
+basic BAD. The simple short-time energy algorithm calculates the energy
+levels for each frame to detect voice, unvoiced or silenced regions.
+Voiced regions will have higher energy levels, however, the algorithm
+does not take unwanted noise into account which means that we can have
+false indication of voice detection. In order to remove the noise from
+the signal, spectral subtraction can be preformed. In the case of BAD,
+the threshold needs to be adjusted so that unforeseeable sound is not
+interpret as the infants cry.  Zero-crossing rate (ZCR), is the rate at
+which a signal changes from plus to minus and back.  The higher the
+rate the higher the frequency which indicates possible voice activity.
+According to \cite{infantDetec} the cry sound that an infant makes has
+a fundamental frequency of 250-600 Hz (pitch). To be able to use ZCR
+together with the information above, it is necessary to extract the
+pitch from the signal in order to match the frequency interval. 
 
-The main task of BAD is to detect infant activity, an alternate algorithm is proposed in \cite{infantDetec}. 
-It describes an cry detection algorithm that is build up by three main stages. i) \emph{VAD}, a 
-statistical model-based detector \cite{statis} is used for detecting sections with sufficient audio acitivity. It also helps
-to reduce the power consumption. ii) \emph{Classification}, uses k-nearest neighbours (k-NN) algorithm \cite{k-NN} 
-to label each frame as either 'cry' (1), close enough, or 'no cry' (0). iii) Post-processing, 
-validation stage in order to reduce false-negative errors. The idea of having devoted algorithm to detect
-infant cry is a winning concept for a BAD application, according to the authors it even had promising results 
-in low SNR. Despite simplicity of the algorithm many of the features required to implement were mentioned
-earlier to be out of scope for this project.
+The main task of BAD is to detect infant activity, an alternate algorithm is
+proposed in \cite{infantDetec}.  It describes an cry detection algorithm that
+is build up by three main stages. i) \emph{VAD}, a statistical model-based
+detector \cite{statis} is used for detecting sections with sufficient audio
+acitivity. It also helps to reduce the power consumption. ii)
+\emph{Classification}, uses k-nearest neighbours (k-NN) algorithm \cite{k-NN}
+to label each frame as either 'cry' (1), close enough, or 'no cry' (0). iii)
+Post-processing, validation stage in order to reduce false-negative errors. The
+idea of having devoted algorithm to detect infant cry is a winning concept for
+a BAD application, according to the authors it even had promising results in
+low SNR. Despite simplicity of the algorithm many of the features required to
+implement were mentioned earlier to be out of scope for this project.
 
-An algorithm that might be of interest \cite{blekinge} suggests a new approach to speech enhancement, 
-without the help of VAD technology. The signal is divided into multiple sub-bands and an noise floor 
-level estimate is calculated simultaneously as the short-time average. The goal is to boost the 
-sub-bands with high Signal-to-Noise Ration (SNR) instead of to suppress the lower. This algorithm 
-has great potential to reduce the noise levels when analyzing incoming signals to the BAD application. 
+An algorithm that might be of interest \cite{blekinge} suggests a new approach
+to speech enhancement, without the help of VAD technology. The signal is
+divided into multiple sub-bands and an noise floor level estimate is calculated
+simultaneously as the short-time average. The goal is to boost the sub-bands
+with high Signal-to-Noise Ration (SNR) instead of to suppress the lower. This
+algorithm has great potential to reduce the noise levels when analyzing
+incoming signals to the BAD application. 
 
-A quick search on the net gives significant amount of hits for smart-phone based BAD applications. The techniques 
-vary, from bluetooth to Wi-Fi and 3-/4G solutions. The award winning application \emph{Baby Monitor 3G} 
-\cite{bm3G} is a feature rich cross platform application that solves most the of issues brought up in this report. It supports 
-both Wi-Fi and 3G/LTE networks, ability to transfer high quality live video, adjustable microphone sensitivity, 
-talk-back functionality and guarantees both reliability and privacy. It can be assumed that the Android based BAD 
-application \emph{Dormi} \cite{sleekbit} offers similar features as Baby Monitor 3G, even if Baby Monitor 3G's feature list 
-provides barely any deeper information. It is noteworthy that \emph{Domri} have both \emph{Smart noise detection} 
-and \emph{Adaptive audio enhancement} as sales pitch, which from a engineering point of view is very attractive. 
+A quick search on the net gives significant amount of hits for smart-phone
+based BAD applications. The techniques vary, from bluetooth to Wi-Fi and 3-/4G
+solutions. The award winning application \emph{Baby Monitor 3G} \cite{bm3G} is
+a feature rich cross platform application that solves most the of issues
+brought up in this report. It supports both Wi-Fi and 3G/LTE networks, ability
+to transfer high quality live video, adjustable microphone sensitivity,
+talk-back functionality and guarantees both reliability and privacy. It can
+be assumed that the Android based BAD application \emph{Dormi}
+\cite{sleekbit} offers similar features as Baby Monitor 3G, even if Baby
+Monitor 3G's feature list provides barely any deeper information. It is
+noteworthy that \emph{Domri} have both \emph{Smart noise detection} and
+\emph{Adaptive audio enhancement} as sales pitch, which from a engineering
+point of view is very attractive. 
 
 Following is a purposed algorithm for an BAD application
 \newpage
