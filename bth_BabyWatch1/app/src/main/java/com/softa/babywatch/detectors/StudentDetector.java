@@ -8,30 +8,96 @@ import com.softa.babywatch.R;
 
 public class StudentDetector implements BabyDetector {
 
-	private short currentValue;
-	private short maxValue = 0;
-	private int counter;
-	final int positiveFrames = 0;
-	private boolean start = false;
-	private final int seconds = 5;
-	private int threshold;
-	private int gain;
+	// Keeps track of the values
+	private short currentValue = 0;
+	private int frameCounter = 0;
+
+	// Initializing
+	private boolean init = false;
+	private boolean senseChange = false;
+	private long sum = 0;
+	private int procentage = 0;
+	private int multiply;
+
+	// Constants
+	private final int maxFrames = 10000;
+	private final int framesThreshold = 20;
+	private final int MAX_ENERGY_CEILING = 6000;
+
+
+	// Holds the values for the measurements of detector
+	private short threshold = 0;
+	private short baseline = 0;
 
 	@Override
 	public BabyState updateState(double average) {
-		start();
+		BabyState state = null;
 		currentValue = (short) average;
-		if (currentValue > maxValue) {
-			maxValue = currentValue;
+		if (!init) {
+			if (frameCounter < maxFrames) {
+				sum += currentValue;
+				frameCounter++;
+				state = BabyState.SLEEPING;
+			} else {
+				sum = sum / maxFrames;
+				baseline = (short) sum;
+				init = true;
+				multiply = (MAX_ENERGY_CEILING / baseline);
+				threshold = getThreshold(baseline, procentage);
+				frameCounter = 0;
+				state = BabyState.SLEEPING;
+			}
+		} else if (init) {
+			if (senseChange) {
+				threshold = getThreshold(baseline, procentage);
+			}
+			if (frameCounter > framesThreshold) {
+				frameCounter = 0;
+				state = BabyState.AWAKE;
+			} else if (currentValue > threshold) {
+				frameCounter++;
+				state = BabyState.NOISE;
+			} else {
+				if (frameCounter > 0) {
+					frameCounter--;
+					state = BabyState.NOISE;
+				} else if (frameCounter == 0) {
+					state = BabyState.SLEEPING;
+				}
+
+			}
 		}
-		return BabyState.NOISE;
+		return state;
 	}
 
+	/**
+	 * getThreshold scales the threshold in relation to the MAX_ENERGY_CEILING
+	 * @param baseline the calculated reference point
+	 * @param procentage the sensitivity bar's value
+	 * @return returns the new threshold scaled to the sensitivity level choosen by the user
+	 */
+	private short getThreshold(short baseline, int procentage) {
+		short temp;
+		switch (procentage) {
+			case 0:
+				temp = (short) (baseline * multiply);
+				break;
+			case 100:
+				temp = (short) (baseline * (multiply*0.001));
+				break;
+			default:
+				double denominate = (double) procentage/100;
+				temp = (short) (baseline * (multiply * (double)(1 - denominate)));
+				break;
+		}
+		senseChange = false;
+		return temp;
+	}
 
 	@Override
 	public short getBackgroundLevel() {
 		// TODO Auto-generated method stub
-		return maxValue;
+		return threshold;
 	}
 
 	@Override
@@ -47,7 +113,7 @@ public class StudentDetector implements BabyDetector {
 		final TextView amplitudeLabel = (TextView) configView.findViewById(R.id.sensValue);
 
 		SeekBar bar = (SeekBar) configView.findViewById(R.id.senseBar);
-		bar.setProgress(10);
+		bar.setProgress(0);
 		bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			@Override
@@ -62,11 +128,13 @@ public class StudentDetector implements BabyDetector {
 
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-				//limit = (short) (Short.MAX_VALUE * progress / 100);
 				amplitudeLabel.setText(progress + "%");
+
+				procentage = progress;
+				senseChange = true;
 			}
 		});
-		amplitudeLabel.setText(10 + "%");
+		amplitudeLabel.setText(0 + "%");
 		return configView;
 	}
 
@@ -85,24 +153,6 @@ public class StudentDetector implements BabyDetector {
 	
     @Override
 	public String getText2Label() {
-		return "Current max value measured = ";
-	}
-
-	/**
-	 * The detector is set to start working after a predefined "seconds".
-	 * This gives the caretaker time to leave the room without setting off the alarm
-	 */
-	private void start() {
-		if (!start) {
-			for (int i = 0; i < seconds; i++) {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// Handle different
-					e.printStackTrace();
-				}
-			}
-		}
-		start = true;
+		return "threshold value = ";
 	}
 }

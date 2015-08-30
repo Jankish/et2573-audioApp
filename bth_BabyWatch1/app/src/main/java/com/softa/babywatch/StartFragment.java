@@ -134,6 +134,7 @@ public class StartFragment extends Fragment {
 					 */
 					double average = sum / buffer.length;
 					recursiveSum = (ALPHA * oldRecursiveSum) + ((1-ALPHA)*average);
+					oldRecursiveSum = recursiveSum;
 
 
 					final BabyState babyState = detector.updateState(recursiveSum);
