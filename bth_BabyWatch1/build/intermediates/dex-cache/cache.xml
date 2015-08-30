@@ -6,7 +6,7 @@
         jumboMode="false"
         revision="22.0.1"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="/Users/daniel/Documents/et2573-audioApp/bth_BabyWatch1/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-776f603099068ee9342f7403f4a5eb1f5ed17b0d.jar" />
+        <dex dex="/Users/daniel/Documents/et2573-audioApp/bth_BabyWatch1/app/build/intermediates/pre-dexed/release/support-v4-18.0.0-776f603099068ee9342f7403f4a5eb1f5ed17b0d.jar" />
     </item>
 
 </items>
