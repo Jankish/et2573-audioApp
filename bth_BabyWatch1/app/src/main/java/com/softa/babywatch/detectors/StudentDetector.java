@@ -45,7 +45,7 @@ public class StudentDetector implements BabyDetector {
 				multiply = (MAX_ENERGY_CEILING / baseline);
 				threshold = getThreshold(baseline, procentage);
 				frameCounter = 0;
-				state = BabyState.SLEEPING;
+				state = BabyState.NOISE;
 			}
 		} else if (init) {
 			if (senseChange) {
@@ -61,8 +61,6 @@ public class StudentDetector implements BabyDetector {
 				if (frameCounter > 0) {
 					frameCounter--;
 					state = BabyState.NOISE;
-				//} else if (frameCounter == 0) {
-			//		state = BabyState.SLEEPING;
 				}
 
 			}
