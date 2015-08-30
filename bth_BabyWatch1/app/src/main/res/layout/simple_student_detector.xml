@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Slide the bar to adjust the sensitivity of the detector" />
+        android:text="Slide the bar to adjust the sensitivity" />
     <TextView
         android:id="@+id/sensValue"
         android:layout_width="wrap_content"

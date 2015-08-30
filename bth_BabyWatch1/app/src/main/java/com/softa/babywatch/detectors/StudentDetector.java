@@ -61,8 +61,8 @@ public class StudentDetector implements BabyDetector {
 				if (frameCounter > 0) {
 					frameCounter--;
 					state = BabyState.NOISE;
-				} else if (frameCounter == 0) {
-					state = BabyState.SLEEPING;
+				//} else if (frameCounter == 0) {
+			//		state = BabyState.SLEEPING;
 				}
 
 			}
@@ -141,8 +141,12 @@ public class StudentDetector implements BabyDetector {
 	@Override
 	public String getDescription() {
 		// TODO Auto-generated method stub
-		return "Simple baby detector using recursive averaging. The detector starts 5" +
-				" seconds after the start-button has been pressed." + "\n";
+		return "Simple baby detector using recursive averaging. The detector starts 12" +
+				" seconds after the start-button has been pressed. Within these 12 seconds" +
+				" the detector averages a baseline to handle the noise better." + "\n" +
+				"The bar below adjusts the sensitivity of the detector. When increased the " +
+				"detector will become more sensitive and trigger for less energy filled sound." +
+				" \n";
 	}
 	
 	@Override
@@ -153,6 +157,6 @@ public class StudentDetector implements BabyDetector {
 	
     @Override
 	public String getText2Label() {
-		return "threshold value = ";
+		return "Threshold value = ";
 	}
 }
