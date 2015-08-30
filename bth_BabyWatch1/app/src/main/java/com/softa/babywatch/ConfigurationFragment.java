@@ -9,7 +9,7 @@ import com.softa.babywatch.actions.WakeUpAction;
 import com.softa.babywatch.detectors.BabyDetector;
 import com.softa.babywatch.detectors.ExponentialDetector;
 import com.softa.babywatch.detectors.SimpleAmplitudeDetector;
-import com.softa.babywatch.detectors.TestDetector;
+import com.softa.babywatch.detectors.StudentDetector;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -47,7 +47,7 @@ public class ConfigurationFragment extends Fragment {
 		detectors = new Vector<BabyDetector>();
 		detectors.add(new ExponentialDetector());
 		detectors.add(new SimpleAmplitudeDetector());
-		detectors.add(new TestDetector());
+		detectors.add(new StudentDetector());
 
 		if (container != null) {
 			LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.configuration, container,false);

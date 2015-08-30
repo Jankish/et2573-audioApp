@@ -30,6 +30,11 @@ public class StartFragment extends Fragment {
 	private TextView button;
 	private BabyWatchActivity parentActivity;
 
+	//recursive averaging sum
+	private double recursiveSum = 0;
+	private double oldRecursiveSum = 0;
+	final double ALPHA = 0.5;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -104,8 +109,10 @@ public class StartFragment extends Fragment {
 			 */
 			try
 			{
-				int N = AudioRecord.getMinBufferSize(8000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT);
+				int N = AudioRecord.getMinBufferSize(8000,AudioFormat.CHANNEL_IN_MONO,AudioFormat.ENCODING_PCM_16BIT); /*N:640*/
 				recorder = new AudioRecord(AudioSource.MIC, 8000, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT, N*10);
+
+				recorder.getState();
 				recorder.startRecording();
 
 				/*
@@ -113,16 +120,23 @@ public class StartFragment extends Fragment {
 				 * Reads the data from the recorder and calculates an average to use in the baby detector.
 				 */
 				while(!stopped)
-				{ 
-					short[] buffer =  new short[160];
+				{
+					//was 160 now 10
+					short[] buffer =  new short[10];
 					N = recorder.read(buffer,0,buffer.length);
 					double sum = 0;
 					for (short val : buffer) {
 						sum = sum + Math.abs(val);
 					}
-					double average = sum / buffer.length;
 
-					final BabyState babyState = detector.updateState(average);
+					/**
+					 * To scale it down, dive by buffer length
+					 */
+					double average = sum / buffer.length;
+					recursiveSum = (ALPHA * oldRecursiveSum) + ((1-ALPHA)*average);
+
+
+					final BabyState babyState = detector.updateState(recursiveSum);
 					String detecting = "";
 
 					if (babyState == BabyState.AWAKE) {
