@@ -92,4 +92,14 @@ public class SimpleAmplitudeDetector implements BabyDetector {
 		return "Counter = ";
 	}
 
+	@Override
+	public Boolean getInit() {
+		return null;
+	}
+
+	@Override
+	public void setInit(Boolean value) {
+
+	}
+
 }

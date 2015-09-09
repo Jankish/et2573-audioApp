@@ -33,7 +33,7 @@ public class StudentDetector implements BabyDetector {
 	public BabyState updateState(double average) {
 		BabyState state = null;
 		currentValue = (short) average;
-		if (!init) {
+		if (!getInit()) {
 			if (frameCounter < maxFrames) {
 				sum += currentValue;
 				frameCounter++;
@@ -41,13 +41,14 @@ public class StudentDetector implements BabyDetector {
 			} else {
 				sum = sum / maxFrames;
 				baseline = (short) sum;
-				init = true;
+				//init = true;
+				setInit(true);
 				multiply = (MAX_ENERGY_CEILING / baseline);
 				threshold = getThreshold(baseline, procentage);
 				frameCounter = 0;
 				state = BabyState.NOISE;
 			}
-		} else if (init) {
+		} else if (getInit()) {
 			if (senseChange) {
 				threshold = getThreshold(baseline, procentage);
 			}
@@ -155,6 +156,21 @@ public class StudentDetector implements BabyDetector {
 	
     @Override
 	public String getText2Label() {
-		return "Threshold value = ";
+		if(!getInit()) {
+			threshold = 0;
+			return "Initializing ... ";
+		} else {
+			return "Threshold value = ";
+		}
+	}
+
+	@Override
+	public Boolean getInit() {
+		return init;
+	}
+
+	@Override
+	public void setInit(Boolean value) {
+		init = value;
 	}
 }

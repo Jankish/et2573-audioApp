@@ -67,6 +67,7 @@ public class StartFragment extends Fragment {
 			audio.start();
 			button.setText(R.string.stop);
 			recording = true;
+			currentlySelectedDetector.setInit(false);
 		} else {
 			audio.close();
 			button.setText(R.string.start);

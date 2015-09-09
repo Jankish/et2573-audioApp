@@ -58,4 +58,16 @@ public interface BabyDetector {
 	 */
 	String getText2Label();
 
+	/**
+	 * Returns the boolean init value
+	 *
+	 * @return true or false
+	 */
+	Boolean getInit();
+
+	/**
+	 * Changes the state of init
+	 *
+	 */
+	void setInit(Boolean value);
 }

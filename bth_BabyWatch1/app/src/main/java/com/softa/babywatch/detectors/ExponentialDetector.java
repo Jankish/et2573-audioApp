@@ -102,4 +102,14 @@ public class ExponentialDetector implements BabyDetector {
 		return "Background level = ";
 	}
 
+	@Override
+	public Boolean getInit() {
+		return null;
+	}
+
+	@Override
+	public void setInit(Boolean value) {
+
+	}
+
 }
