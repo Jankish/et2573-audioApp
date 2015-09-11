@@ -4,6 +4,7 @@ public enum BabyState {
 	
 	SLEEPING,
 	NOISE,
-	AWAKE
+	AWAKE,
+	INIT
 
 }

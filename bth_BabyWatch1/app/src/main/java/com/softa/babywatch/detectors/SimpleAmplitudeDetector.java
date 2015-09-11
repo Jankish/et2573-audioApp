@@ -102,4 +102,9 @@ public class SimpleAmplitudeDetector implements BabyDetector {
 
 	}
 
+	@Override
+	public void reset() {
+
+	}
+
 }

@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -60,15 +59,20 @@ public class StartFragment extends Fragment {
 	}
 	
 	private void buttonClick() {
+		parentActivity = (BabyWatchActivity) getActivity();
+		BabyDetector currentlySelectedDetector = parentActivity.currentlySelectedDetector;
 		if (!recording) {
-			parentActivity = (BabyWatchActivity) getActivity();
-			BabyDetector currentlySelectedDetector = parentActivity.currentlySelectedDetector;
+			//parentActivity = (BabyWatchActivity) getActivity();
+			//BabyDetector
+					currentlySelectedDetector = parentActivity.currentlySelectedDetector;
 			audio = new Audio(currentlySelectedDetector);
 			audio.start();
 			button.setText(R.string.stop);
 			recording = true;
 			currentlySelectedDetector.setInit(false);
 		} else {
+			currentlySelectedDetector = parentActivity.currentlySelectedDetector;
+			currentlySelectedDetector.reset();
 			audio.close();
 			button.setText(R.string.start);
 			recording = false;
@@ -76,6 +80,9 @@ public class StartFragment extends Fragment {
 	}
 	
 	private void wakeUp() {
+		parentActivity = (BabyWatchActivity) getActivity();
+		BabyDetector currentlySelectedDetector = parentActivity.currentlySelectedDetector;
+		currentlySelectedDetector.reset();
 		button.setText("Start");
 		recording = false;
 		parentActivity.currentlySelectedAction.babyAwake(parentActivity);
@@ -157,7 +164,17 @@ public class StartFragment extends Fragment {
 					}
 
 					final String currentLevelText = "Current level    = " + detector.getCurrentLevel() + detecting;
-					final String backgroundLevelText =  detector.getText2Label() + detector.getBackgroundLevel();
+					final String backgroundLevelText;
+
+					if (babyState == BabyState.AWAKE) {
+						//backgroundLevelText =  detector.getText2Label();
+						backgroundLevelText = "Baby Alarm Detector Triggered!";
+
+					} else if (babyState == BabyState.INIT) {
+						backgroundLevelText = "Please wait, Initializing...";
+					} else {
+						backgroundLevelText = detector.getText2Label() + detector.getBackgroundLevel();
+					}
 
 					dBHandler.post(new Runnable() {
 

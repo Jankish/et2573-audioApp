@@ -16,7 +16,7 @@ public class StudentDetector implements BabyDetector {
 	private boolean init = false;
 	private boolean senseChange = false;
 	private long sum = 0;
-	private int procentage = 0;
+	private int percentage = 0;
 	private int multiply;
 
 	// Constants
@@ -34,23 +34,25 @@ public class StudentDetector implements BabyDetector {
 		BabyState state = null;
 		currentValue = (short) average;
 		if (!getInit()) {
+			state = BabyState.INIT;
 			if (frameCounter < maxFrames) {
 				sum += currentValue;
 				frameCounter++;
-				state = BabyState.SLEEPING;
+				//state = BabyState.SLEEPING;
 			} else {
 				sum = sum / maxFrames;
 				baseline = (short) sum;
 				//init = true;
 				setInit(true);
 				multiply = (MAX_ENERGY_CEILING / baseline);
-				threshold = getThreshold(baseline, procentage);
+				threshold = getThreshold(baseline, percentage);
 				frameCounter = 0;
+				sum = 0;
 				state = BabyState.NOISE;
 			}
 		} else if (getInit()) {
 			if (senseChange) {
-				threshold = getThreshold(baseline, procentage);
+				threshold = getThreshold(baseline, percentage);
 			}
 			if (frameCounter > framesThreshold) {
 				frameCounter = 0;
@@ -72,12 +74,12 @@ public class StudentDetector implements BabyDetector {
 	/**
 	 * getThreshold scales the threshold in relation to the MAX_ENERGY_CEILING
 	 * @param baseline the calculated reference point
-	 * @param procentage the sensitivity bar's value
+	 * @param percentage the sensitivity bar's value
 	 * @return returns the new threshold scaled to the sensitivity level choosen by the user
 	 */
-	private short getThreshold(short baseline, int procentage) {
+	private short getThreshold(short baseline, int percentage) {
 		short temp;
-		switch (procentage) {
+		switch (percentage) {
 			case 0:
 				temp = (short) (baseline * multiply);
 				break;
@@ -85,7 +87,7 @@ public class StudentDetector implements BabyDetector {
 				temp = (short) (baseline * (multiply*0.001));
 				break;
 			default:
-				double denominate = (double) procentage/100;
+				double denominate = (double) percentage/100;
 				temp = (short) (baseline * (multiply * (double)(1 - denominate)));
 				break;
 		}
@@ -129,7 +131,7 @@ public class StudentDetector implements BabyDetector {
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				amplitudeLabel.setText(progress + "%");
 
-				procentage = progress;
+				percentage = progress;
 				senseChange = true;
 			}
 		});
@@ -156,12 +158,7 @@ public class StudentDetector implements BabyDetector {
 	
     @Override
 	public String getText2Label() {
-		if(!getInit()) {
-			threshold = 0;
-			return "Initializing ... ";
-		} else {
-			return "Threshold value = ";
-		}
+		return "Threshold value = ";
 	}
 
 	@Override
@@ -172,5 +169,11 @@ public class StudentDetector implements BabyDetector {
 	@Override
 	public void setInit(Boolean value) {
 		init = value;
+	}
+
+	@Override
+	public void reset(){
+		frameCounter = 0;
+		sum = 0;
 	}
 }

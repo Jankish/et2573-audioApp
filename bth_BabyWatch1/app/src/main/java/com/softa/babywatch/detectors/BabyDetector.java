@@ -70,4 +70,13 @@ public interface BabyDetector {
 	 *
 	 */
 	void setInit(Boolean value);
+
+	/**
+	 * Resets the frameCounter
+	 */
+	void reset();
+
 }
+
+
+

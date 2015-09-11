@@ -112,4 +112,9 @@ public class ExponentialDetector implements BabyDetector {
 
 	}
 
+	@Override
+	public void reset() {
+
+	}
+
 }
