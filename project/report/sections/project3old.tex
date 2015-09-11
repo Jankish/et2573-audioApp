@@ -1,0 +1,99 @@
+\newpage
+\section{Part 3 (4)}
+The last section of this report, \emph{Part 3}, actually represents \emph{Part 4}
+in the "step-by-step" instructions provided from the institute.
+
+As mentioned in \emph{Part 2}, the \emph{recursive averaging} algorithm is
+crucial for both the simple and advanced algorithm. An comprehensive study of 
+the framework was preformed before the implementation of the simple algorithm
+started.
+
+\subsection{StartFragment.java}
+The first modifications were performed in \emph{startFragment}'s,
+\emph{run()} method. 
+
+\lstinputlisting[language=Java]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.java}
+
+To resemble the MATLAB implementation, the buffer length was decreased from 160
+to 10. Dividing the \emph{sum} with \emph{buffer.length} was kept to scale down 
+the new \emph{P(n)}. After calculating the recursive averaging, the 
+\emph{recursiveSum} is sent to \emph{updateStates()} as parameter.
+
+\subsection{StudentDetector.java}
+The Java class \emph{TestDetector}, which implemented the 
+\emph{BabyDetector} interface, was renamed to \emph{StudentDetector}. Since the 
+class is more complex than the one above, more thorough explanation is provided 
+for each method.
+
+\lstinputlisting[language=Java]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector0.java}
+
+The most important, in the code above, are the three constants
+\emph{maxFrames}, \emph{framesThreshold}, and \emph{MAX ENERGY CEILING}.
+
+\begin{itemize}
+\item \emph{maxFrames}
+	
+	Defines how many frames should be used to average the noise level 
+	prior to start of the main application.
+\item \emph{framesThreshold}
+	
+	Defines how many frames need to breach the threshold value before
+	setting off the alarm.
+\item \emph{MAX ENERGY CEILING} 
+	
+	Despite the questionable variable name, this defines the highest 
+	possible threshold value.
+\end{itemize}
+The \emph{MAX ENERGY CEILING} and \emph{framesThreshold} constant were selected 
+after evaluating the energy levels in different test environments. 
+\emph{framesThreshold} was given an higher value, compared to the MATLAB
+implementation, because it lowered the probability of false alarms.
+Since the application is interested in the background noise levels when the
+caretaker is not present in the room.  Fairly long initialization time was
+implemented, hence why \emph{maxFrames} was set to a high value. 
+
+\lstinputlisting[language=Java]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector2.java}
+
+\emph{updateState()} method will be called from \emph{StartFramgment} class and
+since the user has selected the student detector, the \emph{StudentDetector} 
+inherited method will be called. The input parameter for this method is the 
+average sum, \emph{recursiveSum}. The code is divided into two parts, the upper
+if-statement, that takes the boolean value \emph{init}. 
+When \emph{init == false}, the background noise levels is averaged and a 
+threshold value is configured. This is considered to be performed when starting 
+the application, which is why \emph{init = true} when initialization is finished.
+
+The lower part, when \emph{init == true}, is the main activity detector that
+validates if the \emph{currentValue} is bigger than threshold. However, if the
+sensitiivty bar has been adjusted (\emph{senseChange == true}), a new scaled 
+threshold value will be returned from \emph{getThreshold()}.
+
+
+\lstinputlisting[language=Java]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector3.java}
+
+The \emph{getThreshold()} method calculates the threshold value given the
+baseline and percentage value. Initially, the sensitivity bar will be 0 and
+the $case$ 0 will be \emph{MAX ENERGY CEILING} since \emph{multiply} is
+extracted from
+\[
+\frac{\mbox{\emph{MAX ENERGY CEILING}}}{baseline} 
+\]
+The $case$ 100 is suppose to return the baseline level. However, this is 
+considered too sensitive. Instead a small fraction is added to baseline 
+before it is returned. In the $default$ $case$ a proper estimation is 
+calculated in order to match the scaling set by the user.
+
+
+\lstinputlisting[language=Java]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector5.java}
+
+The inherited method \emph{getConfigurationView} is inspired by the two provided
+classes that also implement \emph{BabyDetector} interface. When the user adjusts
+the sensitivity bar, the flag \emph{senseChange} will be set to \emph{true} and
+threshold will receive a new value.
+
+\subsection{Advanced algorithm}
+After completing the implementation of the simple algorithm, attempts were made
+on implementing the advanced algorithm. However, time being a factor, the poorly
+documented third party DSP.jar packaged required more time and more adjustments
+in the framework to be able to work. The decision was made not to proceed with
+implementing the advance algorithm.
