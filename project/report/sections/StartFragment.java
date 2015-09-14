@@ -60,18 +60,19 @@ public class StartFragment extends Fragment {
 	
 	private void buttonClick() {
 		parentActivity = (BabyWatchActivity) getActivity();
-		BabyDetector currentlySelectedDetector = parentActivity.currentlySelectedDetector;
+		BabyDetector currentlySelectedDetector = 
+			parentActivity.currentlySelectedDetector;
 		if (!recording) {
-			//parentActivity = (BabyWatchActivity) getActivity();
-			//BabyDetector
-					currentlySelectedDetector = parentActivity.currentlySelectedDetector;
+			currentlySelectedDetector = 
+				parentActivity.currentlySelectedDetector;
 			audio = new Audio(currentlySelectedDetector);
 			audio.start();
 			button.setText(R.string.stop);
 			recording = true;
 			currentlySelectedDetector.setInit(false);
 		} else {
-			currentlySelectedDetector = parentActivity.currentlySelectedDetector;
+			currentlySelectedDetector = 
+				parentActivity.currentlySelectedDetector;
 			currentlySelectedDetector.reset();
 			audio.close();
 			button.setText(R.string.start);
@@ -81,7 +82,8 @@ public class StartFragment extends Fragment {
 	
 	private void wakeUp() {
 		parentActivity = (BabyWatchActivity) getActivity();
-		BabyDetector currentlySelectedDetector = parentActivity.currentlySelectedDetector;
+		BabyDetector currentlySelectedDetector = 
+			parentActivity.currentlySelectedDetector;
 		currentlySelectedDetector.reset();
 		button.setText("Start");
 		recording = false;
@@ -129,6 +131,8 @@ public class StartFragment extends Fragment {
 				 */
 				while(!stopped)
 				{
+				private class Audio extends Thread {
+					...
 					//was 160 now 10
 					short[] buffer =  new short[10];
 					N = recorder.read(buffer,0,buffer.length);
@@ -141,11 +145,14 @@ public class StartFragment extends Fragment {
 					 * To scale it down, dive by buffer length
 					 */
 					double average = sum / buffer.length;
-					recursiveSum = (ALPHA * oldRecursiveSum) + ((1-ALPHA)*average);
+					recursiveSum = (ALPHA * oldRecursiveSum) + 
+						((1-ALPHA)*average);
 					oldRecursiveSum = recursiveSum;
 
 
-					final BabyState babyState = detector.updateState(recursiveSum);
+					final BabyState babyState = 
+						detector.updateState(recursiveSum);
+
 					String detecting = "";
 
 					if (babyState == BabyState.AWAKE) {
@@ -163,17 +170,23 @@ public class StartFragment extends Fragment {
 						detecting = "";
 					}
 
-					final String currentLevelText = "Current level    = " + detector.getCurrentLevel() + detecting;
+					final String currentLevelText = 
+						"Current level    = " + 
+						detector.getCurrentLevel() + 
+						detecting;
 					final String backgroundLevelText;
 
 					if (babyState == BabyState.AWAKE) {
-						//backgroundLevelText =  detector.getText2Label();
-						backgroundLevelText = "Baby Alarm Detector Triggered!";
+						backgroundLevelText = 
+							"Baby Alarm Detector Triggered!";
 
 					} else if (babyState == BabyState.INIT) {
-						backgroundLevelText = "Please wait, Initializing...";
+						backgroundLevelText = 
+							"Please wait, Initializing...";
 					} else {
-						backgroundLevelText = detector.getText2Label() + detector.getBackgroundLevel();
+						backgroundLevelText = 
+							detector.getText2Label() + 
+							detector.getBackgroundLevel();
 					}
 
 					dBHandler.post(new Runnable() {

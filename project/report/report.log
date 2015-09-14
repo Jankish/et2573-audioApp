@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.6.15)  2 SEP 2015 15:25
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.6.15)  14 SEP 2015 00:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -314,27 +314,54 @@ File: sections/newFigures/bt_filt_amped.png Graphic file (type QTm)
 [14] (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 13.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 20.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-(/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.
-java
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 2.
- (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omspcr.fd
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/BabyDetector.j
+ava
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 61.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1pcr.fd
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+))
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/BabyState.java
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 3.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 2.
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 8.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 3.
+) [15]
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.
+java)
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.
+java)
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.
+java [16])
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.
+java
+Overfull \hbox (5.40356pt too wide) in paragraph at lines 90--91
+[][][][][][][][][][][] 
+ []
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1pcr.fd
-File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)) [15]) [16]
-(./sections/appendix.tex
+) [17]
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetecto
+r.java) [18]
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetecto
+r.java
+LaTeX Font Info:    Try loading font information for OML+pcr on input line 38.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omlpcr.fd
+File: omlpcr.fd 
+)
+LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <8> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 38.
+)
+[19]
+(/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetecto
+r.java)) [20] (./sections/appendix.tex
 (/Users/daniel/Documents/et2573-audioApp/matlab/butterFilter.m)
-(/Users/daniel/Documents/et2573-audioApp/matlab/recursiveAverg.m) [17
+(/Users/daniel/Documents/et2573-audioApp/matlab/recursiveAverg.m) [21
 
 ]
 (/Users/daniel/Documents/et2573-audioApp/matlab/makeSound.m
@@ -377,16 +404,16 @@ Overfull \hbox (5.40356pt too wide) in paragraph at lines 41--43
 [][][][][][][][][][][][][] 
  []
 
-[18])) [19] (./sections/bibliography.txt) [20
+[22])) [23] (./sections/bibliography.txt) [24
 
 ] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 3820 strings out of 493706
- 52078 string characters out of 6145769
- 166742 words of memory out of 5000000
- 7095 multiletter control sequences out of 15000+600000
- 10614 words of font info for 39 fonts, out of 8000000 for 9000
+ 3902 strings out of 493706
+ 54373 string characters out of 6145769
+ 167126 words of memory out of 5000000
+ 7154 multiletter control sequences out of 15000+600000
+ 10949 words of font info for 40 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 33i,8n,42p,280b,1478s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,8n,42p,300b,1525s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on report.pdf (20 pages).
+Output written on report.pdf (24 pages).

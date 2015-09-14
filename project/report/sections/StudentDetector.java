@@ -88,7 +88,8 @@ public class StudentDetector implements BabyDetector {
 				break;
 			default:
 				double denominate = (double) percentage/100;
-				temp = (short) (baseline * (multiply * (double)(1 - denominate)));
+				temp = (short) (baseline * (multiply * 
+							(double)(1 - denominate)));
 				break;
 		}
 		senseChange = false;
@@ -126,9 +127,13 @@ public class StudentDetector implements BabyDetector {
 			public void onStartTrackingTouch(SeekBar seekBar) {
 				// Do nothing
 			}
+	@Override
+	public View getConfigurationView(LayoutInflater inflater) {
+	...
 
 			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+			public void onProgressChanged(SeekBar seekBar, 
+				int progress, boolean fromUser) {
 				amplitudeLabel.setText(progress + "%");
 
 				percentage = progress;

@@ -1,0 +1,139 @@
+\newpage
+\section{Part 3 (4)}
+The last section of this report, represents \emph{Part 4} in the "step-by-step"
+instructions provided by the institute.As mentioned in \emph{Part 2}, the 
+\emph{recursive averaging} is crucial for both the simple and advanced algorithm. 
+For a more rigid and maintainable application, a comprehensive study of the 
+framework was performed prior to theimplementation. 
+
+In order to make the student \emph{Baby Activity Detector} work, additional
+methods were added to existing interface and classes. The added methods will
+first be presented and the implementation will follow.
+
+\subsection{BabyDetector.java}
+Three new methods were added to the \emph{BabyDetector} interface in order to
+make it possible to change the boolean variable \emph{init} and reset the 
+\emph{frameCounter \& sum} in \emph{StudentDetector} from 
+\emph{StartFragment}.  
+
+\lstinputlisting[language=Java,
+	linerange=61-77]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/BabyDetector.java}
+
+\subsection{BabyState.java}
+To notify the user when the application is initializing or has
+triggered off the alarm, a fourth state was introduced to the \emph{BabyState}
+enum class. 
+
+\lstinputlisting[language=Java,linerange=3-10]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/BabyState.java}
+
+\subsection{StartFragment.java}
+As the name suggests, a lot is start from this class. The private \emph{Audio}
+class which extends \emph{Thread}, is is responsible for audio handling. The
+simple algorithm is partially implemented in the private class, only
+the \emph{recursive algorithm}. The rest of the algorithm is in
+\emph{StudentDetector}. 
+
+\lstinputlisting[language=Java,linerange={32-36}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.java}
+
+To resemble the MATLAB implementation, the buffer length was decreased from 160
+to 10. Dividing the \emph{sum} with \emph{buffer.length} was kept to scale down 
+the new \emph{P(n)}. After calculating the \emph{recursive averaging}, the 
+\emph{recursiveSum} is sent to \emph{StudentDetector}'s \emph{updateStates()} 
+method as parameter.
+\lstinputlisting[language=Java,linerange={132-155}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.java}
+
+The new state, that was implemented in \emph{BabyState}, is used to decide
+what to display to the user. 
+
+\lstinputlisting[language=Java,linerange={173-190}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.java}
+
+If the application is stopped at any time, after it has started, it will need to
+recalculate the baseline (noise level). That means that \emph{init} will need to
+be set to \emph{false} and \emph{frameCounter \& sum} need to be reset. That is
+done by calling \emph{reset()}. However, if the application is stopped before
+the initialization is completed the boolean variable, \emph{init}, needs to be 
+set to \emph{false} through \emph{setInit(false)} call. 
+
+\lstinputlisting[language=Java,linerange={61-91}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StartFragment.java}
+
+
+\subsection{StudentDetector.java}
+The Java class \emph{TestDetector}, which implemented the \emph{BabyDetector}
+interface, was renamed to \emph{StudentDetector}. Since the class is unfamiliar
+to the reader, a more thorough explanation is provided for important methods and
+variable names.
+
+\subsection{Private variables}
+Many of the private variables declared in \emph{StudentDetector} are self
+explanatory. However, some of them are important  need further clarifying.
+\lstinputlisting[language=Java,linerange={9-10,12-14,16-21,23-27,29-31}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
+\begin{itemize}
+\item \emph{init}
+	
+	Boolean value that keeps track if the initializing sequence has been
+	performed.
+\item \emph{senseChange}
+
+	Boolean value that keeps track if the user has adjusted the sensitivity
+	bar in the configuration menu.
+\item \emph{maxFrames}
+
+	Defines how many frames should be used to average the baseline (noise
+	level) prior to the start of the student detector application.
+\item \emph{framesThreshold}
+
+	Defines how many consecutive frames need to breach the threshold value
+	before setting off the alarm.
+\item \emph{MAX ENERGY CEILING}
+	
+	Despite the questionable variable name, this defines the highest
+	possible threshold value.
+\end{itemize}
+
+The \emph{MAX ENERGY CEILING} and \emph{framesThreshold} constants were selected
+after evaluating the energy levels in different environments.
+\emph{framesThreshold} was given an higher value, compared to the MATLAB
+implementation, because it lowered the probability of false alarms. Since the
+application is interested in the background noise levels, a fairly long
+initialization time was set to \emph{maxFrames}. Another benefit is that it
+gives the caretaker time to start the application and leave the room without
+setting off the alarm.
+
+\subsection{updateState()}
+\emph{updateState()} method is called from \emph{StartFragment} class since it
+inheritage the \emph{BabyDetector} interface. The input parameter for this
+method is the recursive averaging sum, \emph{recursiveSum}. It is possible to
+visualize the method as two parts. The upper, when the boolean value \emph{init}
+is false and the lower part, when \emph{init} is true. When \emph{init} is
+false, the background noise levels are averaged and a threshold value is
+configured. This is considered to be performed before the detector is activated,
+which is why the \emph{init} is set to true when initialization is finished. If
+the initialization is aborted or the application is restarted, the \emph{init}
+value should be set to false and a new baseline should be calculated.
+\lstinputlisting[language=Java,linerange={32-40,42-44,46-71}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
+The lower part of the method, when \emph{init} equals true, is the main activity
+detector that validates if the \emph{currentValue} is bigger than the threshold.
+However, if the sensitivity bar has been adjusted (\emph{senseChange}) is set to
+true), a new scaled threshold value will be returned from \emph{getThreshold()}.
+
+\subsection{getThreshold()}
+The \emph{getThreshold()} method calculates the threshold value given the
+baseline and percentage. Initially, the sensitivity bar will be set to 0 \% and 
+the $case$ 0 will be $\sim$\emph{MAX ENERGY CEILING} since \emph{multiply} is 
+extracted from 
+\[
+\frac{\mbox{\emph{MAX ENERGY CEILING}}}{baseline}
+\]
+The $case$ 100 is suppose to return the baseline. However, this is considered
+too sensitive. Instead a small fraction is added to baseline before it is
+returned. In the $default case$ a proper percentage estimation is calculated in 
+order to match the scaling set by the user.
+\lstinputlisting[language=Java,linerange={80-97}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
+
+\subsection{Advanced algorithm}
+After completing the implementation of the simple algorithm, attempts were made
+on implementing the advanced. However, time being a factor, together with poor
+documentation on the third-party DSP.jar packaged required more time and more
+adjustments in the framework to make the bandpass filter work. The decision was
+made not to proceed with implementing the advanced algorithm since the simple
+was good enough for a student release.
