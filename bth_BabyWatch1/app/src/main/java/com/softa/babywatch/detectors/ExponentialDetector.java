@@ -22,19 +22,27 @@ public class ExponentialDetector implements BabyDetector {
 
 	@Override
 	public BabyState updateState(double average) {
+
 		int background = getBackgroundLevel();
+		// Returnerar (1-0.999(=0.001) * 32768 ~ 32.768
 		shortAvg =  (shortAvg * gammaShort + average);
+		// Första iterationen
+		// shortAvg = 0 * 0.99 + average = average
 		if (average < background) {
+		// om in-parametern är större än background noise
 			longAvg = (longAvg * gammaShort + average);
+			//Räkna om longAvg = 32768 * 0.99 + average
 		} else {
 			longAvg = (longAvg * gammaLong + average);
-
+			//Räkna om longAvg = 32768 * 0.999 + average
 		}
-
-		if (getCurrentLevel() < background * 5) {						
+		// om 0.01 * average < background * 5
+		if (getCurrentLevel() < background * 5) {
+			//starta tiden
 			babyStart = System.currentTimeMillis();
 			return BabyState.SLEEPING;
 
+		// Om sluttiden - startiden > 3.0 * 1000
 		} else if (System.currentTimeMillis() - babyStart > (1000 * screamTime)) { 
 			longAvg = 32768;
 			shortAvg = 0;

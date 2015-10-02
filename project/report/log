@@ -1,0 +1,20 @@
+Iteration 1 Average = 10
+
+background = (1-0.999)*32768 = 32
+shortAvg = (0 * 0.99) + 10 = 10
+
+if(average < background) ? true
+	longAvg = 32768*0.99 + 10 = 32450.32
+
+getCurrentLevel = (1-0.99)*10 = 0.01 * 10 = 0.1
+
+1. Hämta backgroundLevel()
+2. Räkna ut shortAvg
+3. Om average(in-parametern till metoden)<background
+	Räkna ut ny longAvg med kort gamma //något lägre värde
+4. annars
+	Räkna ut ny longAvg med lång gamma //Högre värde
+5. Om getCurrentLvel < backgroud * 5
+	"starta" tiden
+6. annars om sluttiden - starttiden > 1000*3 
+	Färdigt
