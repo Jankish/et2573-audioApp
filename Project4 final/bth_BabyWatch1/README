@@ -1,0 +1,13 @@
+Provided with this zip-folder are two .apk files. One is release and the other
+one is debug. To run the student BAD (Baby Activity Detector) select 
+"Student Detector" in the configuration view, after installing and running the
+application. There are further instructions on why but also how to use the 
+scaling bar provided.
+
+As with the other detectors, simple tap on the screen once will start the
+detector. There is a ~12 seconds intended delay. During this time, 
+the application calculates the baseline. In other words, averages the 
+noise levels and making the detector neglect it.
+
+It is possible to adjust the sensitivity of the threshold at any given time
+during the operation.

@@ -65,7 +65,7 @@ variable names.
 \subsection{Private variables}
 Many of the private variables declared in \emph{StudentDetector} are self
 explanatory. Some, however, are important and need further clarifying.
-\lstinputlisting[language=Java,linerange={9-10,12-14,16-21,23-27,29-31}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
+\lstinputlisting[language=Java,linerange={9-10,12-14,16-20,22-25,28-30}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
 \begin{itemize}
 \item \emph{init}
 	
@@ -83,14 +83,11 @@ explanatory. Some, however, are important and need further clarifying.
 
 	Defines how many consecutive frames need to breach the threshold value
 	before setting off the alarm.
-\item \emph{MAX ENERGY CEILING}
+\item \emph{constant K}
 	
-	Despite the questionable variable name, defines the highest
-	possible threshold value.
+	Multiplier constant that is used in \emph{getThreshold()}
 \end{itemize}
 
-The \emph{MAX ENERGY CEILING} and \emph{framesThreshold} constants were selected
-after evaluating the energy levels in different environments.
 \emph{framesThreshold} was given an higher value, compared to the MATLAB
 implementation, because it lowered the probability of false alarms. Since the
 application is interested in the background noise levels, a fairly long
@@ -109,7 +106,7 @@ configured. This is considered to be performed before the detector is activated,
 which is why the \emph{init} is set to true when initialization is finished. If
 the initialization is aborted or the application is restarted, the \emph{init}
 value should be set to false and a new baseline should be calculated.
-\lstinputlisting[language=Java,linerange={32-40,42-44,46-71}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
+\lstinputlisting[language=Java,linerange={32-40,42-44,46-69}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
 The lower part of the method, when \emph{init} equals to true, is the main 
 activity detector that validates if the \emph{currentValue} is bigger than the 
 threshold. However, if the sensitivity bar has been adjusted (\emph{senseChange}
@@ -119,16 +116,14 @@ is set to true), a new scaled threshold value is returned from
 \subsection{getThreshold()}
 The \emph{getThreshold()} method calculates the threshold value given the
 \emph{baseline} and \emph{percentage}. Initially, the sensitivity bar will be 
-set to 0 \% and the $case$ 0 will be $\sim$\emph{MAX ENERGY CEILING} since 
-\emph{multiply} is extracted from 
+set to 0 \% and the $case$ 0 will be \emph{baseline * K} . Any other percentage input
+from the slider will be evaluated with
 \[
-\frac{\mbox{\emph{MAX ENERGY CEILING}}}{baseline}
+max((((100-percentage)*baseline*K)/100),baseline)
 \]
-The $case$ 100 is suppose to return the baseline. However, this is considered
-too sensitive. Instead a small fraction is added to baseline before it is
-returned. In the $default$ $case$ a proper percentage estimation is calculated in 
-order to match the scaling set by the user.
-\lstinputlisting[language=Java,linerange={80-97}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
+
+The $case$ 100 is suppose to return the baseline.
+\lstinputlisting[language=Java,linerange={96-108}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
 
 \subsection{getConfigurationView()}
 The boolean value \emph{senseChange} and integer \emph{percentage} are modified
@@ -136,7 +131,7 @@ in this class. The percentage is extracted from the sensitivity bar. If a call
 is made to the inner method \emph{onProgressChanged()} a new \emph{percentage} 
 value is retrived and the boolean \emph{senseChange} is set to true. This will
 enforce a new calculation for the threshold value in \emph{updateState()}.
-\lstinputlisting[language=Java,linerange={130-145}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
+\lstinputlisting[language=Java,linerange={140-156}]{/Users/daniel/Documents/et2573-audioApp/project/report/sections/StudentDetector.java}
 
 
 \subsection{Getters, setters, and reset}
@@ -177,4 +172,18 @@ noise level which makes it static for the changes in the background.
 A minor issue that can cause the alarm to set off too early is if the 
 time is set too lown. That is why further tweaking is required of the
 \emph{Exponential Detector}.
+
+The \emph{Student Detector} is not flawless. A drawback in the current version
+is in the \emph{getThreshold()} method. Depending on the manufacturer of the
+device, the
+initializing baseline can vary due to different hardware and software
+implementations for sound recording. Since \emph{Math.max()} method is between
+two 32-bit integer values, the method will also return an interger. Devices that produce 
+a large baseline are running the risk of overflowing the returning short value
+from \emph{getThreshold()} method when typecasting from integer is performed.  
+This can result in \emph{threshold} variable having a negativ value.
+
+
+
+
 

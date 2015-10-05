@@ -17,12 +17,11 @@ public class StudentDetector implements BabyDetector {
 	private boolean senseChange = false;
 	private long sum = 0;
 	private int percentage = 0;
-	private int multiply;
 
 	// Constants
 	private final int maxFrames = 10000;
-	private final int framesThreshold = 20;
-	private final int MAX_ENERGY_CEILING = 6000;
+	private final int framesThreshold = 40;
+	private final int K = 150;
 
 
 	// Holds the values for the measurements of detector
@@ -38,13 +37,10 @@ public class StudentDetector implements BabyDetector {
 			if (frameCounter < maxFrames) {
 				sum += currentValue;
 				frameCounter++;
-				//state = BabyState.SLEEPING;
 			} else {
 				sum = sum / maxFrames;
 				baseline = (short) sum;
-				//init = true;
 				setInit(true);
-				multiply = (MAX_ENERGY_CEILING / baseline);
 				threshold = getThreshold(baseline, percentage);
 				frameCounter = 0;
 				sum = 0;
@@ -94,6 +90,20 @@ public class StudentDetector implements BabyDetector {
 		}
 		senseChange = false;
 		return temp;
+	}
+
+
+	/**
+	 * getThreshold scales the threshold in relation sensitivity bar
+	 * @param baseline the calculated reference point
+	 * @param percentage the sensitivity bar's value
+	 * @return returns the new threshold scaled to the sensitivity 
+	 * level chosen by the user
+	 */
+	private short getThreshold(short baseline, int percentage) {
+		int result = Math.max((int)(((100-percentage)*baseline*K)/100),
+				(int)baseline);
+		return (short)result;
 	}
 
 	@Override
